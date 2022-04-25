@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Logic {
     public static void main(String[] args) {
 
-        String[] words = { "hello", "broke", "money", "cocks", "penis" };
+        String[] words = { "hello", "broke", "money", "nigel", "super" };
         String word = words[(int) (Math.random() * words.length)];
         Scanner input = new Scanner(System.in);
         int g = 6;
