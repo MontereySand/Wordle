@@ -6,5 +6,5 @@ Wordle written in Java with a GUI made using Java Swing. With fun modes like har
 
 Standard Folder Structure
 
-SRC folder for sources
-LIB folder for dependencies
+- `src`: for sources
+- `lib`: for dependencies
