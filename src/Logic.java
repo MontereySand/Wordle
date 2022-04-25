@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Wordle {
+public class Logic {
     public static void main(String[] args) {
 
         String[] words = { "hello", "broke", "money", "cocks", "penis" };
