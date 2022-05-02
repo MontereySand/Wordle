@@ -29,6 +29,8 @@ public class Logic {
                        System.out.println("The guess " + guess.substring(i, i+1) + " is correct, but in the wrong spot");
                        //temp code to be replaced with GUI
                        //does not work for double letters
+                       // need a way to check if all of the letters are in the right spot - from Krrish
+                       // need to add which letters are not correct at all - from Krrish
                        }
                        
                    }
