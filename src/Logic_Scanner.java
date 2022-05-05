@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 public class Logic_Scanner {
     public static void main(String[] args) {
-        gameMethod(); 
-        //testerMethod("hello"); 
+        //gameMethod(); 
+        testerMethod("randy"); 
         }
 
 
@@ -39,7 +39,7 @@ public class Logic_Scanner {
         Scanner input = new Scanner(System.in);
         int g = 0;
         String guess = "";
-        System.out.println(word); //tester
+        //System.out.println(word); //tester
         System.out.println("Enter your first guess!");
             while (guess != word){
                 if(g == 6){
