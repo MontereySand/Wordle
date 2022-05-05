@@ -27,12 +27,13 @@ public class Logic_Scanner {
 
         String word = words.get((int)(Math.random() * words.size()));
         Scanner input = new Scanner(System.in);
+        String wordTester = "hello";
         int g = 6;
         String guess = "";
         System.out.println(word); //tester
         System.out.println("Enter your first guess!");
         
-        while (guess != word){
+        while (guess != wordTester){
 
             guess = input.nextLine(); //works as intended
             if(guess.equals(word)){
@@ -71,6 +72,3 @@ public class Logic_Scanner {
         }
     }
 }
-
-//this is possibly not an issue but the terminal needs to be erased before every reboot 
-//probbaly is an issue
