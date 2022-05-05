@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Logic_Scanner {
     public static void main(String[] args) {
         //gameMethod(); 
-        testerMethod("randy"); 
+        testerMethod("randr"); 
         }
 
 
