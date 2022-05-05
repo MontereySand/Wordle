@@ -17,8 +17,9 @@ public class Logic_Scanner {
         // checking end of file
         while (sc.hasNext()) {
             str = sc.next(); 
-            // adding each string to arraylist
+            // adding each string from dict.txt to arraylist
             words.add(str.toLowerCase());
+       
             
         }
 
@@ -30,7 +31,7 @@ public class Logic_Scanner {
         String wordTester = "hello";
         int g = 6;
         String guess = "";
-        System.out.println(word); //tester
+        System.out.println(word); //tester, tells us what the word is so we can simulate a game 
         System.out.println("Enter your first guess!");
         
         while (guess != wordTester){
@@ -39,6 +40,7 @@ public class Logic_Scanner {
             if(guess.equals(word)){
                 System.out.println("You got it. Game over. Winner winner chicken dinner");
                 break; 
+                //solves terminal issue 
             }
            else if (guess.length()!=5){
                 System.out.println("Must be 5 letters!");
@@ -72,3 +74,7 @@ public class Logic_Scanner {
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 323e1ebe1dc857d936746c0d87fb2fffbb0a857a
