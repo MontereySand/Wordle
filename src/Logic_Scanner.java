@@ -13,7 +13,7 @@ public class Logic_Scanner {
         //(tester) 
         //System.out.println(words); 
 
-        public static ArrayList wordExtractor(){
+public static ArrayList wordExtractor(){
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null; 
         try {
@@ -33,7 +33,7 @@ public class Logic_Scanner {
         return words; 
         }
 
-    public static void gameMethod() {
+public static void gameMethod() {
         ArrayList<String> useless = wordExtractor(); 
         String word = useless.get((int)(Math.random() * useless.size()));
         Scanner input = new Scanner(System.in);
@@ -78,7 +78,7 @@ public class Logic_Scanner {
                 }
             }  } } //end gameMethod 
 
-    public static void testerMethod(String tester) { //like gameMethod, but with a word we decide for testing purposes
+            public static void testerMethod(String tester) { //like gameMethod, but with a word we decide for testing purposes
             Scanner input = new Scanner(System.in);
                 String word = tester; 
                 int g = 0;
