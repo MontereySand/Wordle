@@ -10,10 +10,9 @@ public class Logic_Scanner {
         }
 
 
-        //(tester) 
-        //System.out.println(words); 
+       
 
-public static ArrayList wordExtractor(){
+public static String wordExtractor(){
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null; 
         try {
@@ -30,12 +29,12 @@ public static ArrayList wordExtractor(){
             words.add(str.toLowerCase());
             
         }
-        return words; 
+        String word = words.get((int)(Math.random() * words.size()));
+        return word; 
         }
 
 public static void gameMethod() {
-        ArrayList<String> useless = wordExtractor(); 
-        String word = useless.get((int)(Math.random() * useless.size()));
+    String word = wordExtractor(); 
         Scanner input = new Scanner(System.in);
         int g = 0;
         String guess = "";
@@ -126,5 +125,5 @@ public static void testerMethod(String tester) { //like gameMethod, but with a w
                 
 }
 
-//change
+
 
