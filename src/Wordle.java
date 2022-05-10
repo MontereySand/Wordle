@@ -1,6 +1,6 @@
-import java.util.Scanner;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Wordle {
@@ -50,13 +50,9 @@ public class Wordle {
         return formatted;
     }
 
-    public static void gameMethod() {
+    public void play() {
         Wordle wordle = new Wordle();
         String currentGuess;
-        System.out.println("");
-        System.out.println("==================================================================");
-        System.out.println("Wordle");
-        System.out.println("==================================================================");
         System.out.println(wordle.getAnswer());// just shows the answer
         // Scanner input = new Scanner(System.in);// temp string
         System.out.println("Enter Guess #1:");
@@ -71,7 +67,7 @@ public class Wordle {
             currentGuess = input.nextLine();
         }
         if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
-            System.out.println("hopefully the loop breaks here, it should");
+            System.out.println("First try? Seems a little suspicious :)");
             return;
         }
         System.out.println(wordle.format(currentGuess));
@@ -102,7 +98,8 @@ public class Wordle {
     }
 
     public static void main(String[] args) {
-        gameMethod();
+        Wordle wordle = new Wordle();
+        wordle.play();
     }
 
 }
