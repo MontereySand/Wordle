@@ -79,7 +79,7 @@ public class Wordle {
             System.out.println(wordle.format(currentGuess));
             if (i == 5) {
                 System.out.println("Better luck next time, the answer was");
-                System.out.println(wordle.getAnswer());
+                System.out.println(wordle.getAnswer() + ":)");
                 return;
             }
             i++;
