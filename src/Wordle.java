@@ -5,11 +5,9 @@ import java.util.ArrayList;
 
 public class Wordle {
     private String gameanswer;
-
     public Wordle() {
         gameanswer = wordExtractor();
     }
-
     public String wordExtractor() {
 
         ArrayList<String> words = new ArrayList<String>();
@@ -30,11 +28,9 @@ public class Wordle {
         String word = words.get((int) (Math.random() * words.size()));
         return word;
     }
-
     public String getAnswer() {
         return gameanswer;
     }
-
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer;
@@ -49,7 +45,6 @@ public class Wordle {
         }
         return formatted;
     }
-
     public void play() {
         Wordle wordle = new Wordle();
         String currentGuess;
@@ -96,7 +91,6 @@ public class Wordle {
         }
 
     }
-
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
         wordle.play();
