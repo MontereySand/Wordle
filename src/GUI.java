@@ -20,6 +20,7 @@ public class GUI implements ActionListener {
     private JLabel label;
     private JFrame frame;
     private JPanel panel;
+    
 
     public GUI() {
       
@@ -55,7 +56,7 @@ public class GUI implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        clicks++;
+        clicks++; // increments each time you press button
         label.setText("Number of clicks:" + clicks);
         
     }
