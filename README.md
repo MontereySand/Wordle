@@ -1,5 +1,5 @@
 ## Description
-Project editors: Giulia, Aditya, Krrish
+Project editors: Aditya M, Guilia T, Krrish G
 
 Wordle written in Java with a GUI made using Java Swing.
 Command line based so it runs fast and the GUI acts like a wrapper around what's printed in the terminal. 
