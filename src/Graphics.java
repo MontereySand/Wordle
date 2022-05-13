@@ -4,14 +4,12 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-public class GUI implements ActionListener {
+public class Graphics implements ActionListener {
     private int clicks = 0;
     private JLabel label;
     private JFrame frame;
     private JPanel panel;
-
-    public GUI() {
+    public Graphics() {
         frame = new JFrame();
         JButton button = new JButton("Click me");
         label = new JLabel("Number of clicks: 0");
@@ -23,12 +21,9 @@ public class GUI implements ActionListener {
         frame.setVisible(true);
         frame.getContentPane().setBackground(new Color(255, 0, 0));
     }
-
     public static void main(String[] args) {
-        new GUI();
+        new Graphics();
     }
-
-    @Override
     public void actionPerformed(ActionEvent e) {
         clicks++; // increments each time you press button
         label.setText("Number of clicks:" + clicks);

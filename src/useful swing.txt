@@ -1,126 +1,128 @@
+Recognized Methods
+===================
 Jinternalframe
 Jlabel
 
 ===================
 JApplet	
-An extended version of java.applet.Applet that adds support for the JFC/Swing component architecture.
+    An extended version of java.applet.Applet that adds support for the JFC/Swing component architecture.
 JButton	
-An implementation of a "push" button.
+    An implementation of a "push" button.
 JCheckBox	
-An implementation of a check box -- an item that can be selected or deselected, and which displays its state to the user.
+    An implementation of a check box -- an item that can be selected or deselected, and which displays its state to the user.
 JCheckBoxMenuItem	
-A menu item that can be selected or deselected.
+    A menu item that can be selected or deselected.
 JColorChooser	
-JColorChooser provides a pane of controls designed to allow a user to manipulate and select a color.
+    JColorChooser provides a pane of controls designed to allow a user to manipulate and select a color.
 JComboBox<E>	
-A component that combines a button or editable field and a drop-down list.
+    A component that combines a button or editable field and a drop-down list.
 JComponent	
-The base class for all Swing components except top-level containers.
+    The base class for all Swing components except top-level containers.
 JDesktopPane	
-A container used to create a multiple-document interface or a virtual desktop.
+    A container used to create a multiple-document interface or a virtual desktop.
 JDialog	
-The main class for creating a dialog window.
+    The main class for creating a dialog window.
 JEditorPane	
-A text component to edit various kinds of content.
+    A text component to edit various kinds of content.
 JFileChooser	
-JFileChooser provides a simple mechanism for the user to choose a file.
+    JFileChooser provides a simple mechanism for the user to choose a file.
 JFormattedTextField	
-JFormattedTextField extends JTextField adding support for formatting arbitrary values, as well as retrieving a particular object once the user has edited the text.
+    JFormattedTextField extends JTextField adding support for formatting arbitrary values, as well as retrieving a particular object once the user has edited the text.
 JFormattedTextField.AbstractFormatter	
-Instances of AbstractFormatter are used by JFormattedTextField to handle the conversion both from an Object to a String, and back from a String to an Object.
+    Instances of AbstractFormatter are used by JFormattedTextField to handle the conversion both from an Object to a String, and back from a String to an Object.
 JFormattedTextField.AbstractFormatterFactory	
-Instances of AbstractFormatterFactory are used by JFormattedTextField to obtain instances of AbstractFormatter which in turn are used to format values.
+    Instances of AbstractFormatterFactory are used by JFormattedTextField to obtain instances of AbstractFormatter which in turn are used to format values.
 JFrame	
-An extended version of java.awt.Frame that adds support for the JFC/Swing component architecture.
+    An extended version of java.awt.Frame that adds support for the JFC/Swing component architecture.
 JInternalFrame	
-A lightweight object that provides many of the features of a native frame, including dragging, closing, becoming an icon, resizing, title display, and support for a menu bar.
+    A lightweight object that provides many of the features of a native frame, including dragging, closing, becoming an icon, resizing, title display, and support for a menu bar.
 JInternalFrame.JDesktopIcon	
-This component represents an iconified version of a JInternalFrame.
+    This component represents an iconified version of a JInternalFrame.
 JLabel	
-A display area for a short text string or an image, or both.
+    A display area for a short text string or an image, or both.
 JLayer<V extends Component>	
-JLayer is a universal decorator for Swing components which enables you to implement various advanced painting effects as well as receive notifications of all AWTEvents generated within its borders.
+    JLayer is a universal decorator for Swing components which enables you to implement various advanced painting effects as well as receive notifications of all AWTEvents generated within its borders.
 JLayeredPane	
-JLayeredPane adds depth to a JFC/Swing container, allowing components to overlap each other when needed.
+    JLayeredPane adds depth to a JFC/Swing container, allowing components to overlap each other when needed.
 JList<E>	
-A component that displays a list of objects and allows the user to select one or more items.
+    A component that displays a list of objects and allows the user to select one or more items.
 JList.DropLocation	
-A subclass of TransferHandler.DropLocation representing a drop location for a JList.
+    A subclass of TransferHandler.DropLocation representing a drop location for a JList.
 JMenu	
-An implementation of a menu -- a popup window containing JMenuItems that is displayed when the user selects an item on the JMenuBar.
+    An implementation of a menu -- a popup window containing JMenuItems that is displayed when the user selects an item on the JMenuBar.
 JMenuBar	
-An implementation of a menu bar.
+    An implementation of a menu bar.
 JMenuItem	
-An implementation of an item in a menu.
+    An implementation of an item in a menu.
 JOptionPane	
-JOptionPane makes it easy to pop up a standard dialog box that prompts users for a value or informs them of something.
+    JOptionPane makes it easy to pop up a standard dialog box that prompts users for a value or informs them of something.
 JPanel	
-JPanel is a generic lightweight container.
+    JPanel is a generic lightweight container.
 JPasswordField	
-JPasswordField is a lightweight component that allows the editing of a single line of text where the view indicates something was typed, but does not show the original characters.
+    JPasswordField is a lightweight component that allows the editing of a single line of text where the view indicates something was typed, but does not show the original characters.
 JPopupMenu	
-An implementation of a popup menu -- a small window that pops up and displays a series of choices.
+    An implementation of a popup menu -- a small window that pops up and displays a series of choices.
 JPopupMenu.Separator	
-A popup menu-specific separator.
+    A popup menu-specific separator.
 JProgressBar	
-A component that visually displays the progress of some task.
+    A component that visually displays the progress of some task.
 JRadioButton	
-An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
+    An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
 JRadioButtonMenuItem	
-An implementation of a radio button menu item.
+    An implementation of a radio button menu item.
 JRootPane	
-A lightweight container used behind the scenes by JFrame, JDialog, JWindow, JApplet, and JInternalFrame.
+    A lightweight container used behind the scenes by JFrame, JDialog, JWindow, JApplet, and JInternalFrame.
 JScrollBar	
-An implementation of a scrollbar.
+    An implementation of a scrollbar.
 JScrollPane	
-Provides a scrollable view of a lightweight component.
+    Provides a scrollable view of a lightweight component.
 JSeparator	
-JSeparator provides a general purpose component for implementing divider lines - most commonly used as a divider between menu items that breaks them up into logical groupings.
+    JSeparator provides a general purpose component for implementing divider lines - most commonly used as a divider between menu items that breaks them up into logical groupings.
 JSlider	
-A component that lets the user graphically select a value by sliding a knob within a bounded interval.
+    A component that lets the user graphically select a value by sliding a knob within a bounded interval.
 JSpinner	
-A single line input field that lets the user select a number or an object value from an ordered sequence.
+    A single line input field that lets the user select a number or an object value from an ordered sequence.
 JSpinner.DateEditor	
-An editor for a JSpinner whose model is a SpinnerDateModel.
+    An editor for a JSpinner whose model is a SpinnerDateModel.
 JSpinner.DefaultEditor	
-A simple base class for more specialized editors that displays a read-only view of the model's current value with a JFormattedTextField.
+    A simple base class for more specialized editors that displays a read-only view of the model's current value with a JFormattedTextField.
 JSpinner.ListEditor	
-An editor for a JSpinner whose model is a SpinnerListModel.
+    An editor for a JSpinner whose model is a SpinnerListModel.
 JSpinner.NumberEditor	
-An editor for a JSpinner whose model is a SpinnerNumberModel.
+    An editor for a JSpinner whose model is a SpinnerNumberModel.
 JSplitPane	
-JSplitPane is used to divide two (and only two) Components.
+    JSplitPane is used to divide two (and only two) Components.
 JTabbedPane	
-A component that lets the user switch between a group of components by clicking on a tab with a given title and/or icon.
+    A component that lets the user switch between a group of components by clicking on a tab with a given title and/or icon.
 JTable	
-The JTable is used to display and edit regular two-dimensional tables of cells.
+    The JTable is used to display and edit regular two-dimensional tables of cells.
 JTable.DropLocation	
-A subclass of TransferHandler.DropLocation representing a drop location for a JTable.
+    A subclass of TransferHandler.DropLocation representing a drop location for a JTable.
 JTextArea	
-A JTextArea is a multi-line area that displays plain text.
+    A JTextArea is a multi-line area that displays plain text.
 JTextField	
-JTextField is a lightweight component that allows the editing of a single line of text.
+    JTextField is a lightweight component that allows the editing of a single line of text.
 JTextPane	
-A text component that can be marked up with attributes that are represented graphically.
+    A text component that can be marked up with attributes that are represented graphically.
 JToggleButton	
-An implementation of a two-state button.
+    An implementation of a two-state button.
 JToggleButton.ToggleButtonModel	
-The ToggleButton model
+    The ToggleButton model
 JToolBar	
-JToolBar provides a component that is useful for displaying commonly used Actions or controls.
+    JToolBar provides a component that is useful for displaying commonly used Actions or controls.
 JToolBar.Separator	
-A toolbar-specific separator.
+    A toolbar-specific separator.
 JToolTip	
-Used to display a "Tip" for a Component.
+    Used to display a "Tip" for a Component.
 JTree	
-A control that displays a set of hierarchical data as an outline.
+    A control that displays a set of hierarchical data as an outline.
 JTree.DropLocation	
-A subclass of TransferHandler.DropLocation representing a drop location for a JTree.
+    A subclass of TransferHandler.DropLocation representing a drop location for a JTree.
 JTree.DynamicUtilTreeNode	
-DynamicUtilTreeNode can wrap vectors/hashtables/arrays/strings and create the appropriate children tree nodes as necessary.
+    DynamicUtilTreeNode can wrap vectors/hashtables/arrays/strings and create the appropriate children tree nodes as necessary.
 JTree.EmptySelectionModel	
-EmptySelectionModel is a TreeSelectionModel that does not allow anything to be selected.
+    EmptySelectionModel is a TreeSelectionModel that does not allow anything to be selected.
 JViewport	
-The "viewport" or "porthole" through which you see the underlying information.
+    The "viewport" or "porthole" through which you see the underlying information.
 JWindow	
-A JWindow is a container that can be displayed anywhere on the user's desktop.
+    A JWindow is a container that can be displayed anywhere on the user's desktop.
