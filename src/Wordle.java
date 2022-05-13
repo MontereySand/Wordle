@@ -42,6 +42,7 @@ public class Wordle {
     }
     public void play() {
         Wordle wordle = new Wordle();
+        System.out.println(wordle.getAnswer());
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
@@ -65,7 +66,7 @@ public class Wordle {
                 continue;
             }
             System.out.println(wordle.format(currentGuess));
-            if (i == 5) {
+            if (i < 5) {
                 System.out.println("Better luck next time, the answer was");
                 System.out.println(wordle.getAnswer() + ":)");
                 return;
