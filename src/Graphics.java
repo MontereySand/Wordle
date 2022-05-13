@@ -1,97 +1,36 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-
 import javax.swing.*;
-<<<<<<< HEAD
-public class Graphics {
-    private JImage grid;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-    Graphics() {
+public class GUI implements ActionListener {
+    private int clicks = 0;
+    private JLabel label;
+    private JFrame frame;
+    private JPanel panel;
+
+    public GUI() {
+        frame = new JFrame();
+        JButton button = new JButton("Click me");
+        label = new JLabel("Number of clicks: 0");
+        panel = new JPanel();
+        panel.add(button);
+        panel.add(label);
+        frame.setTitle("Our GUI");
+        frame.pack();
+        frame.setVisible(true);
+        frame.getContentPane().setBackground(new Color(255, 0, 0));
+    }
+
     public static void main(String[] args) {
-         
+        new GUI();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        clicks++; // increments each time you press button
+        label.setText("Number of clicks:" + clicks);
     }
 }
-=======
-    
-   public class Graphics extends JFrame implements ActionListener {
-
-      private static JPanel panel;
-      private static JFrame frame;
-
-      private static JLabel title;
-      private static JLabel stats;
-      private static JTextField user;
-      private static JLabel [] labels;
-
-      public static String [] words;
-      public static int numTries;
-      public static char[] input;
-      public static long startTime;
-      public static char[] answer;
-      public static boolean done;
-      public static String answerChoosen;
-
-      public static Scanner s = new Scanner (System.in);
-
-      public static void main(String [] args) {
-        panel = new JPanel();
-        frame = new JFrame();
-        frame.setSize(220,300);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setTitle("GUI");
-        frame.setLocationRelativeTo(null);
-        frame.add(panel);
-
-        panel.setLayout(null);
-        title = new JLabel("Wordle: ");
-        title.setBounds(10,20,100,25);
-        panel.add(title);
-
-        panel.setLayout(null);
-        stats = new JLabel("Type a five letter word");
-        stats.setBounds(10,50,200,25);
-        panel.add(stats);
-
-        user = new JTextField();
-        user.addActionListener(new GUI());
-        user.setBounds(40,80,80,25);
-        panel.add(user);
-
-        JButton button = new JButton("Enter");
-        button.setBounds(100,20,80,25);
-        button.addActionListener(new GUI());
-        panel.add(button);
-
-        labels = new JLabel[6];
-        for (int i = 0; i < 6; i++) {
-            labels[i] = new JLabel("----");
-            labels[i].setBounds(44,80,80,25);
-            panel.add(labels[i]);
-        }
-        frame.setVisible(true);
-      }
-
-      public static void StartWordle() {
-
-        ArrayList<String> words = new ArrayList<String>();
-        Scanner sc = null;
-        try {
-            sc = new Scanner(new FileReader("lib/dict.txt"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        String str;
-        while (sc.hasNext()) {
-            str = sc.next();
-            words.add(str);
-        }
-
-      }
-
-      }
-    
-   
->>>>>>> 00b524f683548cbc9de4838b25bf8bf0fba14652
