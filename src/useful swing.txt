@@ -2,99 +2,60 @@ Recognized Methods
 ===================
 Jinternalframe
 Jlabel
+JTree.EmptySelectionModel - might want this to not let the user have weird higlighting issues with the images, not sure where to implement but good to note down
 
+Aditya // 
+These are a list of the most popular java swing methods
+I deleted ones that we def don't need
+I sorted some of these out and added annotations to some that i think will help us, in no meeaningful order and i skipped annotating obvious ones, i'll fix this later
 ===================
-JApplet	
-    An extended version of java.applet.Applet that adds support for the JFC/Swing component architecture.
 JButton	
     An implementation of a "push" button.
 JCheckBox	
     An implementation of a check box -- an item that can be selected or deselected, and which displays its state to the user.
-JCheckBoxMenuItem	
-    A menu item that can be selected or deselected.
 JColorChooser	
     JColorChooser provides a pane of controls designed to allow a user to manipulate and select a color.
-JComboBox<E>	
-    A component that combines a button or editable field and a drop-down list.
 JComponent	
     The base class for all Swing components except top-level containers.
-JDesktopPane	
-    A container used to create a multiple-document interface or a virtual desktop.
 JDialog	
     The main class for creating a dialog window.
 JEditorPane	
     A text component to edit various kinds of content.
 JFileChooser	
     JFileChooser provides a simple mechanism for the user to choose a file.
-JFormattedTextField	
+JFormattedTextField	**
     JFormattedTextField extends JTextField adding support for formatting arbitrary values, as well as retrieving a particular object once the user has edited the text.
-JFormattedTextField.AbstractFormatter	
-    Instances of AbstractFormatter are used by JFormattedTextField to handle the conversion both from an Object to a String, and back from a String to an Object.
-JFormattedTextField.AbstractFormatterFactory	
-    Instances of AbstractFormatterFactory are used by JFormattedTextField to obtain instances of AbstractFormatter which in turn are used to format values.
-JFrame	
+JFrame
     An extended version of java.awt.Frame that adds support for the JFC/Swing component architecture.
 JInternalFrame	
     A lightweight object that provides many of the features of a native frame, including dragging, closing, becoming an icon, resizing, title display, and support for a menu bar.
-JInternalFrame.JDesktopIcon	
-    This component represents an iconified version of a JInternalFrame.
-JLabel	
+JLabel **
     A display area for a short text string or an image, or both.
-JLayer<V extends Component>	
-    JLayer is a universal decorator for Swing components which enables you to implement various advanced painting effects as well as receive notifications of all AWTEvents generated within its borders.
 JLayeredPane	
     JLayeredPane adds depth to a JFC/Swing container, allowing components to overlap each other when needed.
 JList<E>	
     A component that displays a list of objects and allows the user to select one or more items.
 JList.DropLocation	
     A subclass of TransferHandler.DropLocation representing a drop location for a JList.
-JMenu	
-    An implementation of a menu -- a popup window containing JMenuItems that is displayed when the user selects an item on the JMenuBar.
-JMenuBar	
-    An implementation of a menu bar.
-JMenuItem	
-    An implementation of an item in a menu.
 JOptionPane	
     JOptionPane makes it easy to pop up a standard dialog box that prompts users for a value or informs them of something.
 JPanel	
     JPanel is a generic lightweight container.
-JPasswordField	
+JPasswordField	** might be needed for a hard mode, also since all of this is modular, we can put in any "hard mode" in any combination, allowing the user to choose
     JPasswordField is a lightweight component that allows the editing of a single line of text where the view indicates something was typed, but does not show the original characters.
-JPopupMenu	
-    An implementation of a popup menu -- a small window that pops up and displays a series of choices.
-JPopupMenu.Separator	
-    A popup menu-specific separator.
-JProgressBar	
+JProgressBar**
     A component that visually displays the progress of some task.
-JRadioButton	
+JRadioButton ** i saw some pictures of this on google, this might be useful for emoji mode
     An implementation of a radio button -- an item that can be selected or deselected, and which displays its state to the user.
-JRadioButtonMenuItem	
-    An implementation of a radio button menu item.
 JRootPane	
     A lightweight container used behind the scenes by JFrame, JDialog, JWindow, JApplet, and JInternalFrame.
-JScrollBar	
-    An implementation of a scrollbar.
-JScrollPane	
-    Provides a scrollable view of a lightweight component.
-JSeparator	
+JSeparator	** can this be used to hide and cut up photos in a way?
     JSeparator provides a general purpose component for implementing divider lines - most commonly used as a divider between menu items that breaks them up into logical groupings.
-JSlider	
+JSlider	** might help with colors being a color picker
     A component that lets the user graphically select a value by sliding a knob within a bounded interval.
-JSpinner	
-    A single line input field that lets the user select a number or an object value from an ordered sequence.
-JSpinner.DateEditor	
-    An editor for a JSpinner whose model is a SpinnerDateModel.
-JSpinner.DefaultEditor	
-    A simple base class for more specialized editors that displays a read-only view of the model's current value with a JFormattedTextField.
-JSpinner.ListEditor	
-    An editor for a JSpinner whose model is a SpinnerListModel.
-JSpinner.NumberEditor	
-    An editor for a JSpinner whose model is a SpinnerNumberModel.
-JSplitPane	
-    JSplitPane is used to divide two (and only two) Components.
 JTabbedPane	
     A component that lets the user switch between a group of components by clicking on a tab with a given title and/or icon.
-JTable	
+JTable ** core??	
     The JTable is used to display and edit regular two-dimensional tables of cells.
 JTable.DropLocation	
     A subclass of TransferHandler.DropLocation representing a drop location for a JTable.
@@ -102,26 +63,12 @@ JTextArea
     A JTextArea is a multi-line area that displays plain text.
 JTextField	
     JTextField is a lightweight component that allows the editing of a single line of text.
-JTextPane	
+JTextPane // reading the line under this, what does graphically mean?
     A text component that can be marked up with attributes that are represented graphically.
 JToggleButton	
     An implementation of a two-state button.
 JToggleButton.ToggleButtonModel	
     The ToggleButton model
-JToolBar	
-    JToolBar provides a component that is useful for displaying commonly used Actions or controls.
-JToolBar.Separator	
-    A toolbar-specific separator.
-JToolTip	
-    Used to display a "Tip" for a Component.
-JTree	
-    A control that displays a set of hierarchical data as an outline.
-JTree.DropLocation	
-    A subclass of TransferHandler.DropLocation representing a drop location for a JTree.
-JTree.DynamicUtilTreeNode	
-    DynamicUtilTreeNode can wrap vectors/hashtables/arrays/strings and create the appropriate children tree nodes as necessary.
-JTree.EmptySelectionModel	
-    EmptySelectionModel is a TreeSelectionModel that does not allow anything to be selected.
 JViewport	
     The "viewport" or "porthole" through which you see the underlying information.
 JWindow	
