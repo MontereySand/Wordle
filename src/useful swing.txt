@@ -27,7 +27,7 @@ JFormattedTextField	**
     JFormattedTextField extends JTextField adding support for formatting arbitrary values, as well as retrieving a particular object once the user has edited the text.
 JFrame
     An extended version of java.awt.Frame that adds support for the JFC/Swing component architecture.
-JInternalFrame	
+JInternalFrame 
     A lightweight object that provides many of the features of a native frame, including dragging, closing, becoming an icon, resizing, title display, and support for a menu bar.
 JLabel **
     A display area for a short text string or an image, or both.
