@@ -42,11 +42,13 @@ public class Wordle {
     }
     public void play() {
         Wordle wordle = new Wordle();
-        System.out.println(wordle.getAnswer());
+       System.out.println(wordle.getAnswer());
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
-        currentGuess = input.nextLine();
+        
+        currentGuess = input.nextLine().toLowerCase();
+        
         while (currentGuess.length() != 5) {
             System.out.println("Enter A 5 Letter Word, Try again");
             System.out.println("Enter Guess #1: ");
