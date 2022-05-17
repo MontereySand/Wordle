@@ -17,6 +17,10 @@ public class Wordle {
         }
 
     };
+
+   
+    String specialChars = "/*!@#$%^&*()\"{}_[]|\\?/<>,.";
+
     private String gameanswer;
 
     public void timerStart() {
@@ -85,6 +89,17 @@ public class Wordle {
             System.out.println("You got the word in " + seconds + " seconds");
             return;
         }
+
+        for (int i = 0; i < currentGuess.length(); i++) {
+            if (specialChars.contains(currentGuess.substring(i,i+1))) {
+           
+            System.out.println("Enter a valid word, try again");
+            System.out.println("Enter Guess #1: ");
+            currentGuess = input.nextLine();
+            }
+
+        }
+
         System.out.println(wordle.format(currentGuess));
         int i = 1;
         while (currentGuess != wordle.getAnswer()) {
