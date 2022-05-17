@@ -101,7 +101,7 @@ public class Wordle {
                 System.out.println("Play Again?");
                 System.out.println("y/n");
                 needs = input.nextLine();
-                if (needs.toLowerCase().contains("yes")) {
+                if (needs.toLowerCase().contains("y")) {
                     g = 0;
 
                 } else {
