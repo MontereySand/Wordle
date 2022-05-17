@@ -2,3 +2,4 @@
 /.vscode
 *.xml
 /.Icon?
+.idea/workspace.xml
