@@ -91,6 +91,7 @@ public class Wordle {
         Wordle wordle = new Wordle();
         System.out.println("Wordle");
         System.out.println("Start/Quit");
+        System.out.println("");
         Scanner input = new Scanner(System.in);
         String needs = input.nextLine();
         needs = needs.toLowerCase();
@@ -100,6 +101,7 @@ public class Wordle {
                 wordle.play();
                 System.out.println("Play Again?");
                 System.out.println("y/n");
+                System.out.println("");
                 needs = input.nextLine();
                 if (needs.toLowerCase().contains("yes")) {
                     g = 0;
