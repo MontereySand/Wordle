@@ -2,14 +2,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 import java.util.ArrayList;
-
 public class Wordle {
     private String gameanswer;
-
     public Wordle() {
         gameanswer = wordExtractor();
     }
-
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null;
@@ -26,11 +23,9 @@ public class Wordle {
         String word = words.get((int) (Math.random() * words.size()));
         return word;
     }
-
     public String getAnswer() {
         return gameanswer;
     }
-
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer;
@@ -45,7 +40,6 @@ public class Wordle {
         }
         return formatted;
     }
-
     public void play() {
         Wordle wordle = new Wordle();
         System.out.println(wordle.getAnswer()+ "this is the answer for debugging :)");
@@ -86,7 +80,6 @@ public class Wordle {
             }
         }
     }
-
     public void loop() {
         Wordle wordle = new Wordle();
         System.out.println("Wordle");
@@ -115,7 +108,6 @@ public class Wordle {
             return;
         }
     }
-
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
         wordle.loop();
