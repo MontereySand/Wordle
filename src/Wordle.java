@@ -68,7 +68,7 @@ public class Wordle {
                 continue;
             }
             System.out.println(wordle.format(currentGuess));
-            if (i < 5) {
+            if (i > 4) {
                 System.out.println("Better luck next time, the answer was");
                 System.out.println(wordle.getAnswer() + ":)");
                 return;
