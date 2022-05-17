@@ -2,11 +2,14 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
 import java.util.ArrayList;
+
 public class Wordle {
     private String gameanswer;
+
     public Wordle() {
         gameanswer = wordExtractor();
     }
+
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null;
@@ -23,9 +26,11 @@ public class Wordle {
         String word = words.get((int) (Math.random() * words.size()));
         return word;
     }
+
     public String getAnswer() {
         return gameanswer;
     }
+
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer;
@@ -40,15 +45,16 @@ public class Wordle {
         }
         return formatted;
     }
+
     public void play() {
         Wordle wordle = new Wordle();
-       System.out.println(wordle.getAnswer());
+        System.out.println(wordle.getAnswer());
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
-        
+
         currentGuess = input.nextLine().toLowerCase();
-        
+
         while (currentGuess.length() != 5) {
             System.out.println("Enter A 5 Letter Word, Try again");
             System.out.println("Enter Guess #1: ");
@@ -81,32 +87,33 @@ public class Wordle {
         }
     }
 
-    public void loop() { 
+    public void loop() {
         Wordle wordle = new Wordle();
-        System.out.println("Would you like to start or go back");
+        System.out.println("Wordle");
+        System.out.println("Start/Quit");
         Scanner input = new Scanner(System.in);
-        String needs = input.nextLine(); 
-        needs = needs.toLowerCase(); 
-        int g = 0; 
-        if(needs.contains("start")){
-            while(g == 0){
-            wordle.play();
-            System.out.println("Would you like to play again? yes or no");
-            needs = input.nextLine(); 
-            if(needs.equals("yes")){
-                g = 0; 
+        String needs = input.nextLine();
+        needs = needs.toLowerCase();
+        int g = 0;
+        if (needs.contains("start")) {
+            while (g == 0) {
+                wordle.play();
+                System.out.println("Play Again?");
+                System.out.println("y/n");
+                needs = input.nextLine();
+                if (needs.toLowerCase().contains("yes")) {
+                    g = 0;
 
+                } else {
+                    g = 1;
+                    return;
+                }
             }
-            else{ 
-                g = 1; 
-                return; 
-            }
+        } else {
+            return;
         }
     }
-    else{
-        return; 
-    }    
-    }
+
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
         wordle.loop();
