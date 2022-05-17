@@ -1,8 +1,29 @@
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.ArrayList;
 public class Wordle {
+
+    int seconds = 0;
+    Timer timer = new Timer();
+    TimerTask task = new TimerTask() {
+
+        @Override
+        public void run() {
+           
+            seconds++;
+          //  System.out.println("Seconds passed: " + seconds);
+            
+        }
+        
+    };
+
+    public void start()  {
+    timer.scheduleAtFixedRate(task,1000,1000);
+    }
+
     private String gameanswer;
     public Wordle() {
         gameanswer = wordExtractor();
@@ -56,6 +77,7 @@ public class Wordle {
         }
         if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
             System.out.println("First try? Seems a little suspicious :)");
+            System.out.println("You got the word in " + seconds + " seconds");
             return;
         }
         System.out.println(wordle.format(currentGuess));
@@ -76,14 +98,17 @@ public class Wordle {
             i++;
             if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
                 System.out.println("Good Job! You won the Wordle");
+                System.out.println("You got the word in " + seconds + " seconds");
                 break;
             }
         }
     }
     public void loop() {
+        
         Wordle wordle = new Wordle();
         System.out.println("Wordle");
         System.out.println("Start/Quit");
+        wordle.start();
         System.out.println("");
         Scanner input = new Scanner(System.in);
         String needs = input.nextLine();
@@ -111,5 +136,6 @@ public class Wordle {
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
         wordle.loop();
+        
     }
 }
