@@ -98,6 +98,7 @@ public class Wordle {
             if (i > 4) {
                 System.out.println("Better luck next time, the answer was");
                 System.out.println(wordle.getAnswer() + ":)");
+                System.out.println("The round took " + seconds + " seconds");
                 return;
             }
             i++;
