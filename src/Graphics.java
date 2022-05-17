@@ -27,3 +27,5 @@ public class Graphics implements ActionListener {
         label.setText("Number of clicks:" + clicks);
     }
 }
+
+

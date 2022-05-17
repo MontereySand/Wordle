@@ -80,8 +80,35 @@ public class Wordle {
             }
         }
     }
+
+    public void loop() { 
+        Wordle wordle = new Wordle();
+        System.out.println("Would you like to start or go back");
+        Scanner input = new Scanner(System.in);
+        String needs = input.nextLine(); 
+        needs = needs.toLowerCase(); 
+        int g = 0; 
+        if(needs.contains("start")){
+            while(g == 0){
+            wordle.play();
+            System.out.println("Would you like to play again? yes or no");
+            needs = input.nextLine(); 
+            if(needs.equals("yes")){
+                g = 0; 
+
+            }
+            else{ 
+                g = 1; 
+                return; 
+            }
+        }
+    }
+    else{
+        return; 
+    }    
+    }
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
-        wordle.play();
+        wordle.loop();
     }
 }
