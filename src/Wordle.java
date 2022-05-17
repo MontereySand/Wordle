@@ -48,7 +48,7 @@ public class Wordle {
 
     public void play() {
         Wordle wordle = new Wordle();
-        System.out.println(wordle.getAnswer());
+        System.out.println(wordle.getAnswer()+ "this is the answer for debugging :)");
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
