@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.ArrayList;
+
 public class Wordle {
 
     int seconds = 0;
@@ -12,22 +13,21 @@ public class Wordle {
 
         @Override
         public void run() {
-           
             seconds++;
-          //  System.out.println("Seconds passed: " + seconds);
-            
         }
-        
-    };
 
-    public void start()  {
-    timer.scheduleAtFixedRate(task,1000,1000);
+    };
+    private String gameanswer;
+
+    public void timerStart() {
+        timer.scheduleAtFixedRate(task, 1000, 1000);
+
     }
 
-    private String gameanswer;
     public Wordle() {
         gameanswer = wordExtractor();
     }
+
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null;
@@ -44,9 +44,11 @@ public class Wordle {
         String word = words.get((int) (Math.random() * words.size()));
         return word;
     }
+
     public String getAnswer() {
         return gameanswer;
     }
+
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer;
@@ -61,9 +63,10 @@ public class Wordle {
         }
         return formatted;
     }
+
     public void play() {
         Wordle wordle = new Wordle();
-        System.out.println(wordle.getAnswer()+ "this is the answer for debugging :)");
+        System.out.println(wordle.getAnswer() + " - this is the answer for debugging :)");
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
@@ -103,12 +106,13 @@ public class Wordle {
             }
         }
     }
+
     public void loop() {
-        
+
         Wordle wordle = new Wordle();
         System.out.println("Wordle");
         System.out.println("Start/Quit");
-        wordle.start();
+        wordle.timerStart();
         System.out.println("");
         Scanner input = new Scanner(System.in);
         String needs = input.nextLine();
@@ -121,7 +125,7 @@ public class Wordle {
                 System.out.println("y/n");
                 System.out.println("");
                 needs = input.nextLine();
-                if (needs.toLowerCase().contains("yes")|| needs.toLowerCase().equals("y")) {
+                if (needs.toLowerCase().contains("yes") || needs.toLowerCase().equals("y")) {
                     g = 0;
 
                 } else {
@@ -133,9 +137,9 @@ public class Wordle {
             return;
         }
     }
+
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
         wordle.loop();
-        
     }
 }
