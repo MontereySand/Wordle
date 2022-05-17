@@ -103,7 +103,7 @@ public class Wordle {
                 System.out.println("y/n");
                 System.out.println("");
                 needs = input.nextLine();
-                if (needs.toLowerCase().contains("yes")) {
+                if (needs.toLowerCase().contains("yes")|| needs.toLowerCase().equals("y")) {
                     g = 0;
 
                 } else {
