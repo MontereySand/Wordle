@@ -110,12 +110,9 @@ public class Wordle {
     }
 
     public void loop() {
-
-        
-        Wordle wordle = new Wordle();
         System.out.println("Wordle");
         System.out.println("Start/Quit");
-        wordle.timerStart();
+        this.timerStart();
         System.out.println("");
         Scanner input = new Scanner(System.in);
         String needs = input.nextLine();
@@ -123,7 +120,7 @@ public class Wordle {
         int g = 0;
         if (needs.contains("start")) {
             while (g == 0) {
-                wordle.play();
+                this.play();
                 System.out.println("Play Again?");
                 System.out.println("y/n");
                 System.out.println("");
