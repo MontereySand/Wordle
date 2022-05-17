@@ -20,6 +20,7 @@ public class Wordle {
     private String gameanswer;
 
     public void timerStart() {
+    
         timer.scheduleAtFixedRate(task, 1000, 1000);
 
     }
@@ -66,6 +67,7 @@ public class Wordle {
 
     public void play() {
         Wordle wordle = new Wordle();
+        seconds = 0;
         System.out.println(wordle.getAnswer() + " - this is the answer for debugging :)");
         String currentGuess;
         System.out.println("Enter Guess #1:");
@@ -109,6 +111,7 @@ public class Wordle {
 
     public void loop() {
 
+        
         Wordle wordle = new Wordle();
         System.out.println("Wordle");
         System.out.println("Start/Quit");
