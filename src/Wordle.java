@@ -5,25 +5,26 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.ArrayList;
 public class Wordle {
-    Timer timer = new Timer();
-    TimerTask task = new TimerTask() {
-        @Override
-        public void run() {
-            seconds++;
-        }
-    };
-    private String gameanswer;
-    private String specialChars;
+    private final Timer timer;
+    private final String gameanswer;
+    private final String specialChars;
+    private final TimerTask task;
     private int seconds;
-    
-    public void timerStart() {
-        timer.scheduleAtFixedRate(task, 1000, 1000);
-
-    }
     public Wordle() {
         gameanswer = wordExtractor();
-        specialChars = "0123456789/*!@#$%^&*()\"{}_[]|\\?/<>,.";
+        specialChars = "`1234567890-=~!@#$%^&*()_+[]}|;:',./<>?";
         seconds = 0;
+        timer = new Timer();
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                seconds++;
+            }
+        };
+    }
+    public String getAnswer() {
+        return gameanswer;
+
     }
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
@@ -40,10 +41,6 @@ public class Wordle {
         }
         String word = words.get((int) (Math.random() * words.size()));
         return word;
-    }
-    public String getAnswer() {
-        return gameanswer;
-
     }
     public String format(String s) {
         String formatted = "";
@@ -72,7 +69,7 @@ public class Wordle {
             currentGuess = input.nextLine();
         }
         for (int i = 0; i < currentGuess.length(); i++) {
-            if (specialChars.contains(currentGuess.substring(i, i + 1))) {
+            while (specialChars.contains(currentGuess.substring(i, i + 1))) {
                 System.out.println("Enter a valid word, try again");
                 System.out.println("Enter Guess #1: ");
                 currentGuess = input.nextLine();
@@ -142,6 +139,10 @@ public class Wordle {
             System.out.println("Stopped");
             return;
         }
+    }
+    public void timerStart() {
+        timer.scheduleAtFixedRate(task, 1000, 1000);
+
     }
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
