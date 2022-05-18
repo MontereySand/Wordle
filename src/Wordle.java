@@ -4,10 +4,10 @@ import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.ArrayList;
-
 public class Wordle {
-
+    private String gameanswer;
     int seconds = 0;
+    String specialChars = "/*!@#$%^&*()\"{}_[]|\\?/<>,.";
     Timer timer = new Timer();
     TimerTask task = new TimerTask() {
 
@@ -17,22 +17,13 @@ public class Wordle {
         }
 
     };
-
-   
-    String specialChars = "/*!@#$%^&*()\"{}_[]|\\?/<>,.";
-
-    private String gameanswer;
-
     public void timerStart() {
-    
         timer.scheduleAtFixedRate(task, 1000, 1000);
 
     }
-
     public Wordle() {
         gameanswer = wordExtractor();
     }
-
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null;
@@ -49,11 +40,9 @@ public class Wordle {
         String word = words.get((int) (Math.random() * words.size()));
         return word;
     }
-
     public String getAnswer() {
         return gameanswer;
     }
-
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer;
@@ -68,7 +57,6 @@ public class Wordle {
         }
         return formatted;
     }
-
     public void play() {
         Wordle wordle = new Wordle();
         seconds = 0;
@@ -124,7 +112,6 @@ public class Wordle {
             }
         }
     }
-
     public void loop() {
         System.out.println("Wordle");
         System.out.println("Start/Quit");
@@ -153,7 +140,6 @@ public class Wordle {
             return;
         }
     }
-
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
         wordle.loop();
