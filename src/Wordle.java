@@ -6,8 +6,8 @@ import java.util.TimerTask;
 import java.util.ArrayList;
 public class Wordle {
     private String gameanswer;
-    int seconds = 0;
-    String specialChars = "0123456789/*!@#$%^&*()\"{}_[]|\\?/<>,.";
+    private String specialChars;
+    private int seconds;
     Timer timer = new Timer();
     TimerTask task = new TimerTask() {
         @Override
@@ -20,6 +20,8 @@ public class Wordle {
     }
     public Wordle() {
         gameanswer = wordExtractor();
+        specialChars = "0123456789/*!@#$%^&*()\"{}_[]|\\?/<>,.";
+        seconds = 0;
     }
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
