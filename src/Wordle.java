@@ -19,7 +19,6 @@ public class Wordle {
     };
     public void timerStart() {
         timer.scheduleAtFixedRate(task, 1000, 1000);
-
     }
     public Wordle() {
         gameanswer = wordExtractor();
