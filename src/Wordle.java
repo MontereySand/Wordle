@@ -5,9 +5,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.ArrayList;
 public class Wordle {
-    private String gameanswer;
-    private String specialChars;
-    private int seconds;
     Timer timer = new Timer();
     TimerTask task = new TimerTask() {
         @Override
@@ -15,8 +12,12 @@ public class Wordle {
             seconds++;
         }
     };
+    private String gameanswer;
+    private String specialChars;
+    private int seconds;
     public void timerStart() {
         timer.scheduleAtFixedRate(task, 1000, 1000);
+
     }
     public Wordle() {
         gameanswer = wordExtractor();
@@ -41,6 +42,7 @@ public class Wordle {
     }
     public String getAnswer() {
         return gameanswer;
+
     }
     public String format(String s) {
         String formatted = "";
