@@ -59,7 +59,7 @@ public class Wordle {
     public void play() {
         Wordle wordle = new Wordle();
         seconds = 0;
-        System.out.println(wordle.getAnswer() + " - this is the answer for debugging :)");
+       // System.out.println(wordle.getAnswer() + " - this is the answer for debugging :)");
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
