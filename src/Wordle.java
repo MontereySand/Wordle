@@ -60,7 +60,7 @@ public class Wordle {
     public void play() {
         Wordle wordle = new Wordle();
         seconds = 0;
-        System.out.println(wordle.getAnswer() + " - this is the answer for debugging :)");
+       // System.out.println(wordle.getAnswer() + " - this is the answer for debugging :)");
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
@@ -69,7 +69,6 @@ public class Wordle {
 
         while (currentGuess.length() != 5) {
             System.out.println("Enter A 5 Letter Word, Try again");
-//            System.out.println("Enter Guess #1: ");
             currentGuess = input.nextLine();
         }
 
@@ -80,7 +79,6 @@ public class Wordle {
                 System.out.println("Enter Guess #1: ");
                 currentGuess = input.nextLine();
                 }
-    
             }
         
         if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
