@@ -100,13 +100,13 @@ public class Wordle {
             System.out.println(wordle.format(currentGuess));
             if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
                 System.out.println("Good Job! You won the Wordle");
-                System.out.println("You got the word in " + seconds + " seconds");
+                System.out.println("You won in " + seconds + " seconds");
                 break;
             }
             if (i > 4) {
                 System.out.println("Better luck next time, the answer was");
-                System.out.println(wordle.getAnswer() + ":)");
-                System.out.println("The round took " + seconds + " seconds");
+                System.out.println(wordle.getAnswer());
+                System.out.println("You took " + seconds + " seconds");
                 return;
             }
             i++;
@@ -114,6 +114,7 @@ public class Wordle {
     }
     public void loop() {
         System.out.println("Wordle");
+        System.out.println("======");
         System.out.println("Start/Quit");
         this.timerStart();
         System.out.println("");
@@ -137,8 +138,7 @@ public class Wordle {
                 }
             }
         } else {
-            System.out.println("Stopped");
-            return;
+            System.exit(0);
         }
     }
     public void timerStart() {
