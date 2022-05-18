@@ -13,3 +13,6 @@ lib/.DS_Store
 out/production/Wordle/Wordle.class
 .idea/workspace.xml
 out/production/Wordle/Wordle.class
+*.xml
+*.class
+*.class

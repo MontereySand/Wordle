@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="56aac5eb-cc21-48fe-813d-fd13caca5dbc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wordle/Wordle$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wordle/Wordle$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Wordle/Wordle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Wordle/Wordle.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Wordle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Wordle.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,5 +54,8 @@
       <updated>1652770901330</updated>
     </task>
     <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Wordle$Wordle.ic" NAME="Wordle Coverage Results" MODIFIED="1652907221481" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
