@@ -23,8 +23,8 @@ public class Wordle {
         };
     }
     public String getAnswer() {
-        return gameanswer;
 
+        return gameanswer;
     }
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
@@ -48,9 +48,11 @@ public class Wordle {
         for (int i = 0; i < 5; i++) {
             if (s.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
                 formatted += answer.substring(i, i + 1);
-            } else if (answer.contains(s.substring(i, i + 1))) {
+            }
+            else if (answer.contains(s.substring(i, i + 1))) {
                 formatted += "^";
-            } else if (!answer.contains(s.substring(i, i + 1))) {
+            }
+            else if (!answer.contains(s.substring(i, i + 1))) {
                 formatted += "_";
             }
         }
@@ -59,7 +61,6 @@ public class Wordle {
     public void play() {
         Wordle wordle = new Wordle();
         seconds = 0;
-       // System.out.println(wordle.getAnswer() + " - this is the answer for debugging :)");
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
