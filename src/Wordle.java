@@ -8,15 +8,12 @@ public class Wordle {
     private String gameanswer;
     int seconds = 0;
     String specialChars = "0123456789/*!@#$%^&*()\"{}_[]|\\?/<>,.";
-
     Timer timer = new Timer();
     TimerTask task = new TimerTask() {
-
         @Override
         public void run() {
             seconds++;
         }
-
     };
     public void timerStart() {
         timer.scheduleAtFixedRate(task, 1000, 1000);
@@ -60,35 +57,27 @@ public class Wordle {
     public void play() {
         Wordle wordle = new Wordle();
         seconds = 0;
-       // System.out.println(wordle.getAnswer() + " - this is the answer for debugging :)");
+        System.out.println(wordle.getAnswer() + " - this is the answer for debugging :)");
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
-
         currentGuess = input.nextLine().toLowerCase();
-
         while (currentGuess.length() != 5) {
             System.out.println("Enter A 5 Letter Word, Try again");
             currentGuess = input.nextLine();
         }
-
-            for (int i = 0; i < currentGuess.length(); i++) {
-                if (specialChars.contains(currentGuess.substring(i,i+1))) {
-                    
+        for (int i = 0; i < currentGuess.length(); i++) {
+            if (specialChars.contains(currentGuess.substring(i, i + 1))) {
                 System.out.println("Enter a valid word, try again");
                 System.out.println("Enter Guess #1: ");
                 currentGuess = input.nextLine();
-                }
             }
-        
+        }
         if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
             System.out.println("First try? Seems a little suspicious :)");
             System.out.println("You won in " + seconds + " seconds");
             return;
         }
-
-        
-
         System.out.println(wordle.format(currentGuess));
         int i = 1;
         while (currentGuess != wordle.getAnswer()) {
