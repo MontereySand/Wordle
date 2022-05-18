@@ -15,6 +15,7 @@ public class Wordle {
     private String gameanswer;
     private String specialChars;
     private int seconds;
+    
     public void timerStart() {
         timer.scheduleAtFixedRate(task, 1000, 1000);
 
@@ -92,6 +93,11 @@ public class Wordle {
                 continue;
             }
             System.out.println(wordle.format(currentGuess));
+            if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
+                System.out.println("Good Job! You won the Wordle");
+                System.out.println("You got the word in " + seconds + " seconds");
+                break;
+            }
             if (i > 4) {
                 System.out.println("Better luck next time, the answer was");
                 System.out.println(wordle.getAnswer() + ":)");
@@ -99,11 +105,6 @@ public class Wordle {
                 return;
             }
             i++;
-            if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
-                System.out.println("Good Job! You won the Wordle");
-                System.out.println("You got the word in " + seconds + " seconds");
-                break;
-            }
         }
     }
     public void loop() {
@@ -131,6 +132,7 @@ public class Wordle {
                 }
             }
         } else {
+            System.out.println("Stopped");
             return;
         }
     }
