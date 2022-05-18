@@ -75,7 +75,7 @@ public class Wordle {
 
             for (int i = 0; i < currentGuess.length(); i++) {
                 if (specialChars.contains(currentGuess.substring(i,i+1))) {
-               
+                    
                 System.out.println("Enter a valid word, try again");
                 System.out.println("Enter Guess #1: ");
                 currentGuess = input.nextLine();
