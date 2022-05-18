@@ -71,16 +71,18 @@ public class Wordle {
             System.out.println("Enter A 5 Letter Word, Try again");
 //            System.out.println("Enter Guess #1: ");
             currentGuess = input.nextLine();
+        }
+
             for (int i = 0; i < currentGuess.length(); i++) {
                 if (specialChars.contains(currentGuess.substring(i,i+1))) {
                
-                System.out.println("Enter a valid letters, try again");
+                System.out.println("Enter a valid word, try again");
                 System.out.println("Enter Guess #1: ");
                 currentGuess = input.nextLine();
                 }
     
             }
-        }
+        
         if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
             System.out.println("First try? Seems a little suspicious :)");
             System.out.println("You won in " + seconds + " seconds");
