@@ -83,7 +83,7 @@ public class Wordle {
         }
         System.out.println(wordle.format(currentGuess));
         int i = 1;
-        while (currentGuess != wordle.getAnswer()) {
+        while (!currentGuess.equals(wordle.getAnswer())) {
             System.out.println("Enter Guess #" + (i + 1) + ":");
             currentGuess = input.nextLine();
             if (currentGuess.length() != 5) {
