@@ -161,6 +161,7 @@ sound
 south
 space
 speed
+spent
 spite
 sport
 squad
@@ -208,4 +209,5 @@ white
 whole
 woman
 world
+young
 youth
