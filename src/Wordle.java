@@ -90,10 +90,12 @@ public class Wordle {
                 System.out.println("Enter A 5 Letter Word, Try again");
                 continue;
             }
+
             for (int j = 0; j < currentGuess.length(); j++) {
                 if (specialChars.contains(currentGuess.substring(j, j + 1))) {
                     System.out.println("Enter a valid word, try again");
-                    System.out.println("Enter Guess #1: ");
+                    System.out.println("Enter Guess #"+ (i+1)+";");
+
                     currentGuess = input.nextLine();
                 }
             }
