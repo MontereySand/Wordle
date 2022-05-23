@@ -85,8 +85,9 @@ public class Wordle implements ActionListener {
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
         currentGuess = input.nextLine().toLowerCase();
-        while (currentGuess.length() != 5) {
+        while (currentGuess.length() > 5 || currentGuess.length() < 5) {
             System.out.println("Enter A 5 Letter Word, Try again");
+            System.out.println("Enter Guess #1: "); 
             currentGuess = input.nextLine();
         }
         for (int i = 0; i < currentGuess.length(); i++) {
@@ -156,6 +157,7 @@ public class Wordle implements ActionListener {
 
                 } else {
                     g = 1;
+                    System.exit(0);
                     return;
                 }
             }
