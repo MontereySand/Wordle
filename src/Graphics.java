@@ -53,6 +53,12 @@ frame.setSize(800, 800);
 frame.setVisible(true);  
 frame.add(btn); 
 
+
+//plan: the btn will have an enter button, 
+//and that will send it throguh wordle.java
+//after that, the text will be displayed on a grid
+//and then the color can change 
+
 }
    
     public void set_visible(JFrame c){
