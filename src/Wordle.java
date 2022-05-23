@@ -3,14 +3,34 @@ import java.io.FileReader;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
 import java.util.ArrayList;
-public class Wordle {
+public class Wordle implements ActionListener {
     private final Timer timer;
     private final String gameanswer;
     private final String specialChars;
     private final TimerTask task;
     private int seconds;
+    private JFrame frame;
+    private JLabel [][] grid;
+    private JTextField inputField;
+    private JButton button;
+    
     public Wordle() {
+        frame = new JFrame("Wordle");
+        grid = new JLabel [6] [5];
+        inputField = new JTextField();
+        button = new JButton("Submit");
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[0].length; col++) {
+                grid[row][col] = new JLabel(); // creating the cells
+            }
+        }
         gameanswer = wordExtractor();
         specialChars = "`1234567890-=~!@#$%^&*()_+[]}|;:',./<>?";
         seconds = 0;
