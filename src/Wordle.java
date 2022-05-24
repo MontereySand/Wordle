@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import java.util.ArrayList;
+
 public class Wordle implements ActionListener {
     private final Timer timer;
     private final String gameanswer;
@@ -17,16 +18,16 @@ public class Wordle implements ActionListener {
     private final TimerTask task;
     private int seconds;
     private JFrame frame;
-    private JLabel [][] grid;
+    private JLabel[][] grid;
     private JTextField inputField;
     private JButton button;
     private String currentGuess;
-    
+
     public Wordle() {
-        this.currentGuess = ""; 
-        
+        this.currentGuess = "";
+
         frame = new JFrame("Wordle");
-        grid = new JLabel [6] [5];
+        grid = new JLabel[6][5];
         inputField = new JTextField();
         button = new JButton("Submit");
         for (int row = 0; row < grid.length; row++) {
@@ -45,10 +46,12 @@ public class Wordle implements ActionListener {
             }
         };
     }
+
     public String getAnswer() {
 
         return gameanswer;
     }
+
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null;
@@ -65,32 +68,32 @@ public class Wordle implements ActionListener {
         String word = words.get((int) (Math.random() * words.size()));
         return word;
     }
+
     public String format(String s) {
         String formatted = "";
-        String answer = gameanswer.toLowerCase(); 
+        String answer = gameanswer.toLowerCase();
         for (int i = 0; i < 5; i++) {
             if (s.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
                 formatted += answer.substring(i, i + 1);
-            }
-            else if (answer.contains(s.substring(i, i + 1))) {
+            } else if (answer.contains(s.substring(i, i + 1))) {
                 formatted += "^";
-            }
-            else if (!answer.contains(s.substring(i, i + 1))) {
+            } else if (!answer.contains(s.substring(i, i + 1))) {
                 formatted += "_";
             }
         }
         return formatted;
     }
+
     public void play() {
         Wordle wordle = new Wordle();
         seconds = 0;
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
-        currentGuess = this.currentGuess.toLowerCase(); 
+        currentGuess = this.currentGuess.toLowerCase();
         while (currentGuess.length() > 5 || currentGuess.length() < 5) {
             System.out.println("Enter A 5 Letter Word, Try again");
-            System.out.println("Enter Guess #1: "); 
+            System.out.println("Enter Guess #1: ");
             currentGuess = input.nextLine();
         }
         for (int i = 0; i < currentGuess.length(); i++) {
@@ -118,7 +121,7 @@ public class Wordle implements ActionListener {
             for (int j = 0; j < currentGuess.length(); j++) {
                 if (specialChars.contains(currentGuess.substring(j, j + 1))) {
                     System.out.println("Enter a valid word, try again");
-                    System.out.println("Enter Guess #"+ (i+1)+";");
+                    System.out.println("Enter Guess #" + (i + 1) + ";");
 
                     currentGuess = input.nextLine();
                 }
@@ -138,15 +141,18 @@ public class Wordle implements ActionListener {
             i++;
         }
     }
+
     public String loop(String e) {
-        String s = format(e); 
-        System.out.println(s); 
-        return s; 
+        String s = format(e);
+        System.out.println(s);
+        return s;
     }
+
     public void timerStart() {
         timer.scheduleAtFixedRate(task, 1000, 1000);
 
     }
+
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
         wordle.loop("e");
