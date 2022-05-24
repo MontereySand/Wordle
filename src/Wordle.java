@@ -139,34 +139,6 @@ public class Wordle implements ActionListener {
         }
     }
     public String loop(String e) {
-        // System.out.println("Wordle");
-        // System.out.println("======");
-        // System.out.println("Start/Quit");
-        // this.timerStart();
-        // System.out.println("");
-        // Scanner input = new Scanner(System.in);
-        // String needs = input.nextLine();
-        // needs = needs.toLowerCase();
-        // int g = 0;
-        // if (needs.contains("start")) {
-        //     while (g == 0) {
-        //         this.play();
-        //         System.out.println("Play Again?");
-        //         System.out.println("y/n");
-        //         System.out.println("");
-        //         needs = input.nextLine();
-        //         if (needs.toLowerCase().contains("yes") || needs.toLowerCase().equals("y")) {
-        //             g = 0;
-
-        //         } else {
-        //             g = 1;
-        //             System.exit(0);
-        //             return;
-        //         }
-        //     }
-        // } else {
-        //     System.exit(0);
-        // }
         String s = format(e); 
         System.out.println(s); 
         return s; 

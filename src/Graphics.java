@@ -1,4 +1,5 @@
 
+import javax.management.Query;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -79,10 +80,9 @@ public class Graphics implements ActionListener {
     
 
 
-    ImageIcon icon = new ImageIcon("lib/Grid.png"); 
+    //ImageIcon icon = new ImageIcon("lib/Grid.png"); 
     
-    //frame.setLayout(null);
-    //frame.setLayout(new GridLayout(3, 3));        
+      
     frame.setVisible(true);  
     JButton b = new JButton("submit");
     b.setBounds(5,30,100,40);
@@ -94,7 +94,7 @@ public class Graphics implements ActionListener {
     frame.add(b);
     frame.add(teeth);
     frame.setVisible(true); 
-    frame.add(new JLabel(icon)); 
+    frame.add(new JLabel()); 
     frame.setPreferredSize(new Dimension(800, 800));
     frame.setVisible(true);
     frame.setLocationRelativeTo(panel);
@@ -181,11 +181,18 @@ public class Graphics implements ActionListener {
 
     int x = 0; 
 
-    
     Wordle weed = new Wordle(); 
+
     public void actionPerformed(ActionEvent e) {
         String b = teeth.getText(); 
-        if(playGame(weed, b) == true){
+        System.out.println(b);
+        System.out.println(weed.getAnswer()); 
+        if(b.equals(weed.getAnswer())){
+            System.out.println("WINNER WINNER"); 
+            System.out.println("You got it in " + (x - 1) + " guesses");
+            return; 
+        }
+       else if(playGame(weed, b) == true){
             buttonWord(x, b);
             buttonColor(format, x); 
             x++; 
