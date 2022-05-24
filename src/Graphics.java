@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -29,7 +30,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
-
+import java.awt.event.*;
+import javax.swing.*;
 public class Graphics implements ActionListener {
     private int clicks = 0;
     private JLabel label;
@@ -37,27 +39,53 @@ public class Graphics implements ActionListener {
     private JPanel panel;
     public Graphics() {
         frame = new JFrame();
-        // frame.getContentPane().setBackground(new Color(50, 50, 50));
-        // ImageIcon icon = new ImageIcon("lib/Grid.png"); 
-        // frame.add(new JLabel(icon)); 
-        // frame.setPreferredSize(new Dimension(800, 800));
-        // frame.setVisible(true);
-        // frame.pack(); 
-        // frame.setLocationRelativeTo(panel);
-JButton btn = new JButton(); 
-JTextField text = new JTextField();  
-btn.add(text); 
-btn.setVisible(true); 
-frame.setLayout(new GridLayout(5, 6));    
-frame.setSize(800, 800);    
-frame.setVisible(true);  
-frame.add(btn); 
+        frame.getContentPane().setBackground(new Color(50, 50, 50));
+    
+    JButton[][] finalAr = new JButton[6][5]; 
+    int x = 135; 
+    int y = 0; 
+    //buttons for each icon grid point 
+    for (int i = 0; i <= finalAr.length; i++){ 
+        for(int h = 0; h <=finalAr[0].length; h++){
+        JButton gj = new JButton("b"); 
+        gj.setBounds(x, 20, 105, 105);
+        frame.add(gj); 
+        gj.setVisible(true); 
+        finalAr[i][h] = gj; 
+        x+=106; 
+        }
+    }
 
 
-//plan: the btn will have an enter button, 
-//and that will send it throguh wordle.java
-//after that, the text will be displayed on a grid
-//and then the color can change 
+    ImageIcon icon = new ImageIcon("lib/Grid.png"); 
+    
+    //frame.setLayout(null);
+    //frame.setLayout(new GridLayout(3, 3));        
+    frame.setVisible(true);  
+    JButton b = new JButton("submit");
+    b.setBounds(5,30,100,40);
+    JTextField t = new JTextField(5);
+    
+    
+
+    frame.add(b);
+    frame.add(t);
+    frame.setVisible(true); 
+    frame.add(new JLabel(icon)); 
+    frame.setPreferredSize(new Dimension(800, 800));
+    frame.setVisible(true);
+    frame.setLocationRelativeTo(panel);
+    t.setVisible(true);
+    t.setBounds(4, 80, 100, 40);
+    t.getBorder(); 
+    frame.pack(); 
+
+    
+
+    
+ 
+        
+
 
 }
    
