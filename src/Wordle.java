@@ -3,14 +3,11 @@ import java.io.FileReader;
 import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
 import java.util.ArrayList;
-
 public class Wordle implements ActionListener {
     private final Timer timer;
     private final String gameanswer;
@@ -22,10 +19,8 @@ public class Wordle implements ActionListener {
     private JTextField inputField;
     private JButton button;
     private String currentGuess;
-
     public Wordle() {
         this.currentGuess = "";
-
         frame = new JFrame("Wordle");
         grid = new JLabel[6][5];
         inputField = new JTextField();
@@ -46,12 +41,10 @@ public class Wordle implements ActionListener {
             }
         };
     }
-
     public String getAnswer() {
 
         return gameanswer;
     }
-
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null;
@@ -68,7 +61,6 @@ public class Wordle implements ActionListener {
         String word = words.get((int) (Math.random() * words.size()));
         return word;
     }
-
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer.toLowerCase();
@@ -83,7 +75,6 @@ public class Wordle implements ActionListener {
         }
         return formatted;
     }
-
     public void play() {
         Wordle wordle = new Wordle();
         seconds = 0;
@@ -117,7 +108,6 @@ public class Wordle implements ActionListener {
                 System.out.println("Enter A 5 Letter Word, Try again");
                 continue;
             }
-
             for (int j = 0; j < currentGuess.length(); j++) {
                 if (specialChars.contains(currentGuess.substring(j, j + 1))) {
                     System.out.println("Enter a valid word, try again");
@@ -141,18 +131,15 @@ public class Wordle implements ActionListener {
             i++;
         }
     }
-
     public String loop(String e) {
         String s = format(e);
         System.out.println(s);
         return s;
     }
-
     public void timerStart() {
         timer.scheduleAtFixedRate(task, 1000, 1000);
 
     }
-
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
         wordle.loop("e");

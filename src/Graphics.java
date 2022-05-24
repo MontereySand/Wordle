@@ -32,7 +32,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import java.awt.event.*;
-import javax.swing.*;
 
 public class Graphics implements ActionListener {
     private int clicks = 0;
@@ -42,11 +41,9 @@ public class Graphics implements ActionListener {
     JButton[][] finalAr = new JButton[6][5];
     JTextField teeth = new JTextField(5);
     JButton killMe = new JButton("");
-
     public Graphics() {
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(50, 50, 50));
-
         int x = 135;
         int y = 20;
         // buttons for each icon grid point
@@ -68,14 +65,11 @@ public class Graphics implements ActionListener {
             frame.add(killMe);
             killMe.setVisible(true);
         }
-
         // ImageIcon icon = new ImageIcon("lib/Grid.png");
-
         frame.setVisible(true);
         JButton b = new JButton("submit");
         b.setBounds(5, 30, 100, 40);
         b.addActionListener(this);
-
         frame.add(b);
         frame.add(teeth);
         frame.setVisible(true);
@@ -87,35 +81,26 @@ public class Graphics implements ActionListener {
         teeth.setBounds(4, 80, 100, 40);
         teeth.getBorder();
         frame.pack();
-
     }
-
     public void set_visible(JFrame c) {
         c.setVisible(true);
     }
-
     public static void main(String[] args) {
         new Graphics();
 
     }
-
     // methods needed:
     // a method that grabs a correct input and puts it on the buttons
     // a method that changes the colors
-
     public void buttonWord(int i, String b) {
         for (int y = 0; y < finalAr[0].length; y++) {
             if (y == 4 && i == 5) {
                 killMe.setText(b.substring(y, y + 1).toUpperCase());
             }
-
             System.out.println(b.substring(y, y + 1));
             finalAr[i][y].setText(b.substring(y, y + 1).toUpperCase());
-
         }
-
     }
-
     public void buttonColor(String b, int x) {
         for (int i = 0; i < b.length(); i++) {
             if (b.substring(i, i + 1).equals("^")) {
@@ -127,9 +112,7 @@ public class Graphics implements ActionListener {
             }
         }
     }
-
     String format = "";
-
     public boolean playGame(Wordle b, String e) {
         Wordle wordle = b;
         System.out.println(wordle.getAnswer());
@@ -150,20 +133,15 @@ public class Graphics implements ActionListener {
             return true;
         }
         return false;
-
     }
-
     int x = 0;
     Wordle weed = new Wordle();
-
     public void actionPerformed(ActionEvent e) {
         String b = teeth.getText();
-
         if (playGame(weed, b) == true) {
             buttonWord(x, b);
             buttonColor(format, x);
             x++;
-
         }
         if (b.equals(weed.getAnswer())) {
             System.out.println("WINNER WINNER");
@@ -175,7 +153,5 @@ public class Graphics implements ActionListener {
             return;
         }
         teeth.setText(null);
-
     }
-
 }
