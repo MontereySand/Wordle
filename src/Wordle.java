@@ -20,8 +20,11 @@ public class Wordle implements ActionListener {
     private JLabel [][] grid;
     private JTextField inputField;
     private JButton button;
+    private String currentGuess;
     
     public Wordle() {
+        this.currentGuess = ""; 
+        
         frame = new JFrame("Wordle");
         grid = new JLabel [6] [5];
         inputField = new JTextField();
@@ -64,7 +67,7 @@ public class Wordle implements ActionListener {
     }
     public String format(String s) {
         String formatted = "";
-        String answer = gameanswer;
+        String answer = gameanswer.toLowerCase(); 
         for (int i = 0; i < 5; i++) {
             if (s.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
                 formatted += answer.substring(i, i + 1);
@@ -135,25 +138,25 @@ public class Wordle implements ActionListener {
             i++;
         }
     }
-    public void loop() {
-        System.out.println("Wordle");
-        System.out.println("======");
-        System.out.println("Start/Quit");
-        this.timerStart();
-        System.out.println("");
-        Scanner input = new Scanner(System.in);
-        String needs = input.nextLine();
-        needs = needs.toLowerCase();
-        int g = 0;
-        if (needs.contains("start")) {
-            while (g == 0) {
-                this.play();
-                System.out.println("Play Again?");
-                System.out.println("y/n");
-                System.out.println("");
-                needs = input.nextLine();
-                if (needs.toLowerCase().contains("yes") || needs.toLowerCase().equals("y")) {
-                    g = 0;
+    public void loop(String e) {
+        // System.out.println("Wordle");
+        // System.out.println("======");
+        // System.out.println("Start/Quit");
+        // this.timerStart();
+        // System.out.println("");
+        // Scanner input = new Scanner(System.in);
+        // String needs = input.nextLine();
+        // needs = needs.toLowerCase();
+        // int g = 0;
+        // if (needs.contains("start")) {
+        //     while (g == 0) {
+        //         this.play();
+        //         System.out.println("Play Again?");
+        //         System.out.println("y/n");
+        //         System.out.println("");
+        //         needs = input.nextLine();
+        //         if (needs.toLowerCase().contains("yes") || needs.toLowerCase().equals("y")) {
+        //             g = 0;
 
                 } else {
                     g = 1;
@@ -171,6 +174,6 @@ public class Wordle implements ActionListener {
     }
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
-        wordle.loop();
+        wordle.loop("e");
     }
 }
