@@ -138,7 +138,7 @@ public class Wordle implements ActionListener {
             i++;
         }
     }
-    public void loop(String e) {
+    public String loop(String e) {
         // System.out.println("Wordle");
         // System.out.println("======");
         // System.out.println("Start/Quit");
@@ -169,6 +169,7 @@ public class Wordle implements ActionListener {
         // }
         String s = format(e); 
         System.out.println(s); 
+        return s; 
     }
     public void timerStart() {
         timer.scheduleAtFixedRate(task, 1000, 1000);

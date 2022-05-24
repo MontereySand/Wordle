@@ -39,6 +39,7 @@ public class Graphics implements ActionListener {
     private JPanel panel;
     JButton[][] finalAr = new JButton[6][5]; 
     JTextField teeth = new JTextField(5);
+    JButton killMe = new JButton(""); 
     public Graphics() {
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(50, 50, 50));
@@ -50,17 +51,18 @@ public class Graphics implements ActionListener {
     for (int i = 0; i < finalAr.length; i++){ 
         for(int h = 0; h < finalAr[0].length; h++){
         JButton gj = new JButton(" "); 
-        gj.setBounds(x, y, 105, 105);
+        gj.setBounds(x, y, 90, 90);
         finalAr[i][h] = gj; 
         frame.add(gj); 
         gj.setVisible(true); 
+        gj.setOpaque(true);
         System.out.println(i + "  " + h);
         x+=106; 
         }
         y+=109; 
         x=135; 
         //this is error fixing, idk what the problem is so I just hardcoded it
-        JButton killMe = new JButton(""); 
+        
         killMe.setBounds(675, 810, 105, 105); 
         frame.add(killMe); 
         finalAr[5][4] = killMe; 
@@ -124,18 +126,34 @@ public class Graphics implements ActionListener {
     //a method that changes the colors
 
     public void buttonWord(int i, String b){
-        
             for(int y = 0; y < finalAr[0].length; y++){
-                JButton n = new JButton(b.substring(y, y+1));
-                System.out.println(b.substring(y, y+1)); 
+                // if(y==4 && i ==5){
+                //     // killMe.setBounds(675, 810, 5,5); 
+                //     // killMe.setText(b.substring(y, y+1).toUpperCase()); 
+                //     // frame.add(killMe); 
+                //     }
+
+                System.out.println(b.substring(y, y+1));
                 finalAr[i][y].setText(b.substring(y, y+1).toUpperCase()); 
-
-            }
-        
-
-        
+            
+        }
 
     }
+
+    public void buttonColor(String b, int x){
+        for(int i =0; i <b.length(); i++){
+            if(b.substring(i, i+1).equals("^")){
+                finalAr[x][i].setBackground(Color.YELLOW);
+            }
+            else if(b.substring(i, i+1).equals("_")){
+                finalAr[x][i].setBackground(Color.LIGHT_GRAY); 
+            }
+            else{ 
+                finalAr[x][i].setBackground(Color.GREEN); 
+            }
+        }
+    }
+    String format = ""; 
 
     public boolean playGame(Wordle b, String e){
         Wordle wordle = b;  
@@ -152,8 +170,9 @@ public class Graphics implements ActionListener {
             System.out.println("BAD LENGTH");
             badChar = true; 
         }
-        else if (!badChar){
+         else if (!badChar){
             wordle.loop(e); 
+            format = wordle.loop(e); 
             return true; 
         }
         return false; 
@@ -168,6 +187,7 @@ public class Graphics implements ActionListener {
         String b = teeth.getText(); 
         if(playGame(weed, b) == true){
             buttonWord(x, b);
+            buttonColor(format, x); 
             x++; 
             
         }
