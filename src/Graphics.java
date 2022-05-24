@@ -37,12 +37,13 @@ public class Graphics implements ActionListener {
     private JLabel label;
     private JFrame frame;
     private JPanel panel;
+    JButton[][] finalAr = new JButton[6][5]; 
     JTextField teeth = new JTextField(5);
     public Graphics() {
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(50, 50, 50));
     
-    JButton[][] finalAr = new JButton[6][5]; 
+    
     int x = 135; 
     int y = 20; 
     //buttons for each icon grid point 
@@ -59,7 +60,7 @@ public class Graphics implements ActionListener {
         y+=109; 
         x=135; 
         //this is error fixing, idk what the problem is so I just hardcoded it
-        JButton killMe = new JButton("kill me"); 
+        JButton killMe = new JButton(""); 
         killMe.setBounds(675, 810, 105, 105); 
         frame.add(killMe); 
         finalAr[5][4] = killMe; 
@@ -118,6 +119,24 @@ public class Graphics implements ActionListener {
         
     }
 
+    //methods needed: 
+    //a method that grabs a correct input and puts it on the buttons 
+    //a method that changes the colors
+
+    public void buttonWord(int i, String b){
+        
+            for(int y = 0; y < finalAr[0].length; y++){
+                JButton n = new JButton(b.substring(y, y+1));
+                System.out.println(b.substring(y, y+1)); 
+                finalAr[i][y].setText(b.substring(y, y+1).toUpperCase()); 
+
+            }
+        
+
+        
+
+    }
+
     public boolean playGame(Wordle b, String e){
         Wordle wordle = b;  
         System.out.println(wordle.getAnswer()); 
@@ -148,12 +167,13 @@ public class Graphics implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String b = teeth.getText(); 
         if(playGame(weed, b) == true){
+            buttonWord(x, b);
             x++; 
-           System.out.println(b); 
+            
         }
         if(x == 6) { 
             System.out.println("End"); 
-            System.exit(0); 
+            return; 
         }
         
     
