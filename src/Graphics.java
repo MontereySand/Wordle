@@ -43,18 +43,34 @@ public class Graphics implements ActionListener {
     
     JButton[][] finalAr = new JButton[6][5]; 
     int x = 135; 
-    int y = 0; 
+    int y = 20; 
     //buttons for each icon grid point 
-    for (int i = 0; i <= finalAr.length; i++){ 
-        for(int h = 0; h <=finalAr[0].length; h++){
+    for (int i = 0; i < finalAr.length; i++){ 
+        for(int h = 0; h < finalAr[0].length; h++){
         JButton gj = new JButton("b"); 
-        gj.setBounds(x, 20, 105, 105);
+        gj.setBounds(x, y, 105, 105);
+        finalAr[i][h] = gj; 
         frame.add(gj); 
         gj.setVisible(true); 
-        finalAr[i][h] = gj; 
+        System.out.println(i + "  " + h);
         x+=106; 
         }
+        y+=109; 
+        x=135; 
+        //this is error fixing, idk what the problem is so I just hardcoded it
+        JButton killMe = new JButton("kill me"); 
+        killMe.setBounds(675, 810, 105, 105); 
+        frame.add(killMe); 
+        finalAr[5][4] = killMe; 
+        killMe.setVisible(true); 
     }
+
+   
+
+
+    
+    
+    
 
 
     ImageIcon icon = new ImageIcon("lib/Grid.png"); 
