@@ -176,13 +176,10 @@ public class Graphics implements ActionListener {
     }
 
     int x = 0; 
-
-    Wordle weed = new Wordle(); 
+    Wordle weed = new Wordle();
 
     public void actionPerformed(ActionEvent e) {
         String b = teeth.getText(); 
-        System.out.println(b);
-        System.out.println(weed.getAnswer()); 
         
         if(playGame(weed, b) == true){
             buttonWord(x, b);
@@ -192,13 +189,14 @@ public class Graphics implements ActionListener {
         }
         if(b.equals(weed.getAnswer())){
             System.out.println("WINNER WINNER"); 
-            System.out.println("You got it in " + (x - 1) + " guesses");
+            System.out.println("You got it in " + (x - 1) + " guess(es)");
             return; 
         }
         if(x == 6) { 
-            System.out.println("End"); 
+            System.out.println("You lost!"); 
             return; 
         }
+        teeth.setText(null); 
         
     
 }
