@@ -87,7 +87,7 @@ public class Wordle implements ActionListener {
         String currentGuess;
         System.out.println("Enter Guess #1:");
         Scanner input = new Scanner(System.in);
-        currentGuess = input.nextLine().toLowerCase();
+        currentGuess = this.currentGuess.toLowerCase(); 
         while (currentGuess.length() > 5 || currentGuess.length() < 5) {
             System.out.println("Enter A 5 Letter Word, Try again");
             System.out.println("Enter Guess #1: "); 
@@ -158,15 +158,17 @@ public class Wordle implements ActionListener {
         //         if (needs.toLowerCase().contains("yes") || needs.toLowerCase().equals("y")) {
         //             g = 0;
 
-                } else {
-                    g = 1;
-                    System.exit(0);
-                    return;
-                }
-            }
-        } else {
-            System.exit(0);
-        }
+        //         } else {
+        //             g = 1;
+        //             System.exit(0);
+        //             return;
+        //         }
+        //     }
+        // } else {
+        //     System.exit(0);
+        // }
+        String s = format(e); 
+        System.out.println(s); 
     }
     public void timerStart() {
         timer.scheduleAtFixedRate(task, 1000, 1000);
