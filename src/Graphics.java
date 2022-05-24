@@ -63,10 +63,8 @@ public class Graphics implements ActionListener {
         y+=109; 
         x=135; 
         //this is error fixing, idk what the problem is so I just hardcoded it
-        
         killMe.setBounds(675, 810, 105, 105); 
         frame.add(killMe); 
-        finalAr[5][4] = killMe; 
         killMe.setVisible(true); 
     }
 
@@ -127,11 +125,9 @@ public class Graphics implements ActionListener {
 
     public void buttonWord(int i, String b){
             for(int y = 0; y < finalAr[0].length; y++){
-                // if(y==4 && i ==5){
-                //     // killMe.setBounds(675, 810, 5,5); 
-                //     // killMe.setText(b.substring(y, y+1).toUpperCase()); 
-                //     // frame.add(killMe); 
-                //     }
+                if(y==4 && i ==5){
+                    killMe.setText(b.substring(y, y+1).toUpperCase()); 
+                    }
 
                 System.out.println(b.substring(y, y+1));
                 finalAr[i][y].setText(b.substring(y, y+1).toUpperCase()); 
@@ -187,16 +183,17 @@ public class Graphics implements ActionListener {
         String b = teeth.getText(); 
         System.out.println(b);
         System.out.println(weed.getAnswer()); 
-        if(b.equals(weed.getAnswer())){
-            System.out.println("WINNER WINNER"); 
-            System.out.println("You got it in " + (x - 1) + " guesses");
-            return; 
-        }
-       else if(playGame(weed, b) == true){
+        
+        if(playGame(weed, b) == true){
             buttonWord(x, b);
             buttonColor(format, x); 
             x++; 
             
+        }
+        if(b.equals(weed.getAnswer())){
+            System.out.println("WINNER WINNER"); 
+            System.out.println("You got it in " + (x - 1) + " guesses");
+            return; 
         }
         if(x == 6) { 
             System.out.println("End"); 
