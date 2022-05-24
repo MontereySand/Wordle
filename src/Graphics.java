@@ -37,6 +37,7 @@ public class Graphics implements ActionListener {
     private JLabel label;
     private JFrame frame;
     private JPanel panel;
+    JTextField teeth = new JTextField(5);
     public Graphics() {
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(50, 50, 50));
@@ -113,10 +114,49 @@ public class Graphics implements ActionListener {
         new Graphics();
         
     }
-    public void actionPerformed(ActionEvent e) {
-        clicks++; // increments each time you press button
-        label.setText("Number of clicks:" + clicks);
+
+    public boolean playGame(Wordle b, String e){
+        Wordle wordle = b;  
+        System.out.println(wordle.getAnswer()); 
+        boolean badChar = false; 
+        String specialChars = "`1234567890-=~!@#$%^&*()_+[]}|;:',./<>?";
+        for (int i = 0; i < e.length(); i++) {
+            if (specialChars.contains(e.substring(i, i + 1))) {
+                System.out.println("bad char"); 
+                badChar = true; 
+            }
+        }
+        if (e.length() > 5 || e.length() < 5) {
+            System.out.println("BAD LENGTH");
+            badChar = true; 
+        }
+        else if (!badChar){
+            wordle.loop(e); 
+            return true; 
+        }
+        return false; 
+    
     }
+
+    int x = 0; 
+
+    
+    Wordle weed = new Wordle(); 
+    public void actionPerformed(ActionEvent e) {
+        String b = teeth.getText(); 
+        if(playGame(weed, b) == true){
+            x++; 
+           System.out.println(b); 
+        }
+        if(x == 6) { 
+            System.out.println("End"); 
+            System.exit(0); 
+        }
+        
+    
 }
+
+}
+
 
 
