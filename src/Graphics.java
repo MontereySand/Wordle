@@ -150,6 +150,7 @@ public class Graphics implements ActionListener {
         }
         if (x == 6) {
             System.out.println("You lost!");
+            System.out.println("The word was " + weed.getAnswer()); 
             return;
         }
         teeth.setText(null);
