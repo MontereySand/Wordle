@@ -25,8 +25,10 @@ public class Wordle implements ActionListener {
     private JPanel gridPanel;
     private JPanel inputPanel;
     private String currentGuess;
+    public final int WORD_LENGTH;
     public Wordle() {
         this.currentGuess = "";
+        WORD_LENGTH = 5;
         frame = new JFrame("Wordle");
         frame.setLayout(new BorderLayout());
         grid = new JLabel[6][5];
@@ -85,7 +87,7 @@ public class Wordle implements ActionListener {
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer.toLowerCase();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < WORD_LENGTH; i++) {
             if (s.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
                 formatted += answer.substring(i, i + 1);
             } else if (answer.contains(s.substring(i, i + 1))) {
