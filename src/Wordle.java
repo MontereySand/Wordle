@@ -6,8 +6,12 @@ import java.util.TimerTask;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 import java.util.ArrayList;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
 public class Wordle implements ActionListener {
     private final Timer timer;
     private final String gameanswer;
@@ -18,10 +22,13 @@ public class Wordle implements ActionListener {
     private JLabel[][] grid;
     private JTextField inputField;
     private JButton button;
+    private JPanel gridPanel;
+    private JPanel inputPanel;
     private String currentGuess;
     public Wordle() {
         this.currentGuess = "";
         frame = new JFrame("Wordle");
+        frame.setLayout(new BorderLayout());
         grid = new JLabel[6][5];
         inputField = new JTextField();
         button = new JButton("Submit");
@@ -30,6 +37,20 @@ public class Wordle implements ActionListener {
                 grid[row][col] = new JLabel(); // creating the cells
             }
         }
+        inputPanel = new JPanel();// uses FLowlayout by default
+        inputPanel.add(inputField);
+        inputPanel.add(button);
+        frame.add(inputPanel, BorderLayout.NORTH);
+        gridPanel = new JPanel();
+        gridPanel.setLayout(new GridLayout(6,5));
+        for(int row = 0; row < grid.length; row++){
+            for (int column = 0; column < grid.length; column++) {
+                gridPanel.add(grid[row][column]);
+            }
+        }
+        
+        //frame.add(inputField, BorderLayout.NORTH);
+
         gameanswer = wordExtractor();
         specialChars = "`1234567890-=~!@#$%^&*()_+[]}|;:',./<>?";
         seconds = 0;
