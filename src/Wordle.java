@@ -19,8 +19,22 @@ public class Wordle implements ActionListener {
     private JTextField inputField;
     private JButton button;
     private String currentGuess;
+    public final int WORD_LENGTH;
     public Wordle() {
         this.currentGuess = "";
+<<<<<<< HEAD
+=======
+        WORD_LENGTH = 5;
+        frame = new JFrame("Wordle");
+        grid = new JLabel[6][5];
+        inputField = new JTextField();
+        button = new JButton("Submit");
+        for (int row = 0; row < grid.length; row++) {
+            for (int col = 0; col < grid[0].length; col++) {
+                grid[row][col] = new JLabel(); // creating the cells
+            }
+        }
+>>>>>>> e566b4c7293745099062d6a011e75ec340c6bbb7
         gameanswer = wordExtractor();
         specialChars = "`1234567890-=~!@#$%^&*()_+[]}|;:',./<>?";
         seconds = 0;
@@ -54,6 +68,7 @@ public class Wordle implements ActionListener {
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer.toLowerCase();
+<<<<<<< HEAD
         String checker = "";
         String checker2 = ""; 
         boolean isTwo = false; 
@@ -89,6 +104,9 @@ public class Wordle implements ActionListener {
         }
         System.out.println(s); 
         for (int i = 0; i < 5; i++) {
+=======
+        for (int i = 0; i < WORD_LENGTH; i++) {
+>>>>>>> e566b4c7293745099062d6a011e75ec340c6bbb7
             if (s.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
                 formatted += answer.substring(i, i + 1);
             } else if (answer.contains(s.substring(i, i + 1))) {
