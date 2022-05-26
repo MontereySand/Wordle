@@ -150,6 +150,7 @@ public class Graphics implements ActionListener {
             }
         }
     }
+    //needs work 
     String alphab = "qwertyuiopasdfghjklzxcvbnm"; 
     public void alphaColor(String b, String format){
         int holder = 0;
