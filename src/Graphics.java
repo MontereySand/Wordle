@@ -1,4 +1,3 @@
-
 import javax.management.Query;
 import javax.swing.*;
 import java.awt.Color;
@@ -150,12 +149,17 @@ public class Graphics implements ActionListener {
             }
         }
     }
+<<<<<<< HEAD
     //needs work 
+=======
+    //doesn't work like it should 
+>>>>>>> afec8eb4278c3e209a86efd2771edd4cd3c38f72
     String alphab = "qwertyuiopasdfghjklzxcvbnm"; 
     public void alphaColor(String b, String format){
         int holder = 0;
         for (int i = 0; i < format.length(); i++) {
             if (format.substring(i, i + 1).equals("^")) {
+<<<<<<< HEAD
                 holder = alphab.indexOf(b.substring(i, i+1)); 
                 alpha.get(holder).setBackground(Color.YELLOW); 
 
@@ -166,12 +170,40 @@ public class Graphics implements ActionListener {
             } else {
                 holder = alphab.indexOf(b.substring(i, i+1)); 
                 alpha.get(holder).setBackground(Color.GREEN); 
+=======
+                if(alphab.contains(format.substring(i, i+1))){
+                holder = alphab.indexOf(b.substring(i, i+1)); 
+                alpha.get(holder).setBackground(Color.YELLOW); 
+                alphab = alphab.substring(0) + "_" + alphab.substring(holder); }
+
+            }
+             else if (format.substring(i, i + 1).equals("_")) {
+                if(alphab.contains(format.substring(i, i+1))){
+                    holder = alphab.indexOf(b.substring(i, i+1)); 
+                    alpha.get(holder).setBackground(Color.DARK_GRAY); 
+                    alphab = alphab.substring(0) + "_" + alphab.substring(holder); }
+    
+             
+            }
+             else {
+                if(alphab.contains(format.substring(i, i+1))){
+                    holder = alphab.indexOf(b.substring(i, i+1)); 
+                    alpha.get(holder).setBackground(Color.GREEN); 
+                    alphab = alphab.substring(0) + "_" + alphab.substring(holder); }
+    
+             
+            }
+>>>>>>> afec8eb4278c3e209a86efd2771edd4cd3c38f72
 
                 
             }
         }
 
+<<<<<<< HEAD
     }
+=======
+    
+>>>>>>> afec8eb4278c3e209a86efd2771edd4cd3c38f72
     String format = "";
     public boolean playGame(Wordle b, String e) {
         Wordle wordle = b;
