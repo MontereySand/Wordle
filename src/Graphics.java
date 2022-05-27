@@ -1,26 +1,47 @@
-
 import javax.management.Query;
 import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.GridLayout;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+import java.awt.event.*;
 
 public class Graphics implements ActionListener {
-    private int clicks = 0;
-    private JLabel label;
     private JFrame frame;
     private JPanel panel;
     JButton[][] finalAr = new JButton[6][5];
     JTextField teeth = new JTextField(5);
     JButton killMe = new JButton("");
+    List<JButton> alpha = new ArrayList();
     public Graphics() {
         frame = new JFrame();
-        frame.getContentPane().setBackground(new Color(50, 50, 50));
+        frame.getContentPane().setBackground(new Color(70, 70, 70));
         int x = 135;
         int y = 20;
         // buttons for each icon grid point
@@ -42,16 +63,55 @@ public class Graphics implements ActionListener {
             frame.add(killMe);
             killMe.setVisible(true);
         }
-        // ImageIcon icon = new ImageIcon("lib/Grid.png");
+        //alphabet button creator 
+        String alphab = "qwertyuiopasdfghjklzxcvbnm"; 
+        int l = 700; 
+        int d = 100; 
+        for (int i = 0; i < 10; i++){
+            JButton gj = new JButton(alphab.substring(i, i+1)); 
+                gj.setBounds(l, d, 30, 30);
+                frame.add(gj);
+                alpha.add(gj); 
+                gj.setVisible(true);
+                gj.setOpaque(true);
+                d+=50; 
+        }
+        d=134; 
+        for(int i = 10; i < 19; i++){
+            l = 750; 
+           
+            JButton gj = new JButton(alphab.substring(i, i+1)); 
+                gj.setBounds(l, d, 30, 30);
+                frame.add(gj);
+                alpha.add(gj); 
+                gj.setVisible(true);
+                gj.setOpaque(true);
+                d+=50; 
+        }
+        d=200; 
+        for(int i = 19; i < 26; i++){
+            l=800; 
+            
+            JButton gj = new JButton(alphab.substring(i, i+1)); 
+                gj.setBounds(l, d, 30, 30);
+                frame.add(gj);
+                alpha.add(gj); 
+                gj.setVisible(true);
+                gj.setOpaque(true);
+                d+=50; 
+
+        }
+
         frame.setVisible(true);
         JButton b = new JButton("submit");
         b.setBounds(5, 30, 100, 40);
         b.addActionListener(this);
+        b.setBackground(Color.DARK_GRAY); 
         frame.add(b);
         frame.add(teeth);
         frame.setVisible(true);
         frame.add(new JLabel());
-        frame.setPreferredSize(new Dimension(800, 800));
+        frame.setPreferredSize(new Dimension(900, 800));
         frame.setVisible(true);
         frame.setLocationRelativeTo(panel);
         teeth.setVisible(true);
@@ -83,16 +143,49 @@ public class Graphics implements ActionListener {
             if (b.substring(i, i + 1).equals("^")) {
                 finalAr[x][i].setBackground(Color.YELLOW);
             } else if (b.substring(i, i + 1).equals("_")) {
-                finalAr[x][i].setBackground(Color.LIGHT_GRAY);
+                finalAr[x][i].setBackground(Color.DARK_GRAY);
             } else {
                 finalAr[x][i].setBackground(Color.GREEN);
             }
         }
     }
+    //doesn't work like it should 
+    String alphab = "qwertyuiopasdfghjklzxcvbnm"; 
+    public void alphaColor(String b, String format){
+        int holder = 0;
+        for (int i = 0; i < format.length(); i++) {
+            if (format.substring(i, i + 1).equals("^")) {
+                if(alphab.contains(format.substring(i, i+1))){
+                holder = alphab.indexOf(b.substring(i, i+1)); 
+                alpha.get(holder).setBackground(Color.YELLOW); 
+                alphab = alphab.substring(0) + "_" + alphab.substring(holder); }
+
+            }
+             else if (format.substring(i, i + 1).equals("_")) {
+                if(alphab.contains(format.substring(i, i+1))){
+                    holder = alphab.indexOf(b.substring(i, i+1)); 
+                    alpha.get(holder).setBackground(Color.DARK_GRAY); 
+                    alphab = alphab.substring(0) + "_" + alphab.substring(holder); }
+    
+             
+            }
+             else {
+                if(alphab.contains(format.substring(i, i+1))){
+                    holder = alphab.indexOf(b.substring(i, i+1)); 
+                    alpha.get(holder).setBackground(Color.GREEN); 
+                    alphab = alphab.substring(0) + "_" + alphab.substring(holder); }
+    
+             
+            }
+
+                
+            }
+        }
+
+    
     String format = "";
     public boolean playGame(Wordle b, String e) {
         Wordle wordle = b;
-        System.out.println(wordle.getAnswer());
         boolean badChar = false;
         String specialChars = "`1234567890-=~!@#$%^&*()_+[]}|;:',./<>?";
         for (int i = 0; i < e.length(); i++) {
@@ -104,7 +197,8 @@ public class Graphics implements ActionListener {
         if (e.length() > 5 || e.length() < 5) {
             System.out.println("BAD LENGTH");
             badChar = true;
-        } else if (!badChar) {
+        } 
+        else if (!badChar) {
             wordle.loop(e);
             format = wordle.loop(e);
             return true;
@@ -114,10 +208,12 @@ public class Graphics implements ActionListener {
     int x = 0;
     Wordle weed = new Wordle();
     public void actionPerformed(ActionEvent e) {
+        System.out.println(weed.getAnswer()); 
         String b = teeth.getText();
         if (playGame(weed, b) == true) {
             buttonWord(x, b);
             buttonColor(format, x);
+            alphaColor(b, format);
             x++;
         }
         if (b.equals(weed.getAnswer())) {
