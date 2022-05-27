@@ -31,7 +31,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 import java.awt.event.*;
-
 public class Graphics implements ActionListener {
     private JFrame frame;
     private JPanel panel;
@@ -39,9 +38,11 @@ public class Graphics implements ActionListener {
     JTextField teeth = new JTextField(5);
     JButton killMe = new JButton("");
     List<JButton> alpha = new ArrayList();
+   
     public Graphics() {
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(70, 70, 70));
+
         int x = 135;
         int y = 20;
         // buttons for each icon grid point
@@ -77,8 +78,9 @@ public class Graphics implements ActionListener {
                 d+=50; 
         }
         d=134; 
+        l = 750; 
         for(int i = 10; i < 19; i++){
-            l = 750; 
+            
            
             JButton gj = new JButton(alphab.substring(i, i+1)); 
                 gj.setBounds(l, d, 30, 30);
@@ -87,9 +89,12 @@ public class Graphics implements ActionListener {
                 gj.setVisible(true);
                 gj.setOpaque(true);
                 d+=50; 
+                System.out.println(gj);
         }
-        d=200; 
-        for(int i = 19; i < 26; i++){
+        d=180; 
+        System.out.println(alphab.length());
+        //for(int i = alphab.length()-1; i>=19; i--){
+        for(int i = 19; i < alphab.length(); i++){
             l=800; 
             
             JButton gj = new JButton(alphab.substring(i, i+1)); 
@@ -99,8 +104,13 @@ public class Graphics implements ActionListener {
                 gj.setVisible(true);
                 gj.setOpaque(true);
                 d+=50; 
+                System.out.println(gj);
 
         }
+        frame.add(new JButton());
+        JButton neww = new JButton(); 
+        alpha.add(0, neww); 
+       
 
         frame.setVisible(true);
         JButton b = new JButton("submit");
@@ -117,6 +127,7 @@ public class Graphics implements ActionListener {
         teeth.setVisible(true);
         teeth.setBounds(4, 80, 100, 40);
         teeth.getBorder();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
     }
     public void set_visible(JFrame c) {
@@ -149,61 +160,34 @@ public class Graphics implements ActionListener {
             }
         }
     }
-<<<<<<< HEAD
+
     //needs work 
-=======
-    //doesn't work like it should 
->>>>>>> afec8eb4278c3e209a86efd2771edd4cd3c38f72
     String alphab = "qwertyuiopasdfghjklzxcvbnm"; 
     public void alphaColor(String b, String format){
         int holder = 0;
         for (int i = 0; i < format.length(); i++) {
             if (format.substring(i, i + 1).equals("^")) {
-<<<<<<< HEAD
                 holder = alphab.indexOf(b.substring(i, i+1)); 
-                alpha.get(holder).setBackground(Color.YELLOW); 
+                alpha.get(holder + 1).setBackground(Color.YELLOW); 
+                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length()); 
 
             } else if (format.substring(i, i + 1).equals("_")) {
                 holder = alphab.indexOf(b.substring(i, i+1)); 
-                alpha.get(holder).setBackground(Color.GRAY); 
+                alpha.get(holder +1).setBackground(Color.GRAY); 
+               alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length()); 
+
              
             } else {
                 holder = alphab.indexOf(b.substring(i, i+1)); 
-                alpha.get(holder).setBackground(Color.GREEN); 
-=======
-                if(alphab.contains(format.substring(i, i+1))){
-                holder = alphab.indexOf(b.substring(i, i+1)); 
-                alpha.get(holder).setBackground(Color.YELLOW); 
-                alphab = alphab.substring(0) + "_" + alphab.substring(holder); }
+                alpha.get(holder +1).setBackground(Color.GREEN); 
+                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length()); 
 
-            }
-             else if (format.substring(i, i + 1).equals("_")) {
-                if(alphab.contains(format.substring(i, i+1))){
-                    holder = alphab.indexOf(b.substring(i, i+1)); 
-                    alpha.get(holder).setBackground(Color.DARK_GRAY); 
-                    alphab = alphab.substring(0) + "_" + alphab.substring(holder); }
-    
-             
-            }
-             else {
-                if(alphab.contains(format.substring(i, i+1))){
-                    holder = alphab.indexOf(b.substring(i, i+1)); 
-                    alpha.get(holder).setBackground(Color.GREEN); 
-                    alphab = alphab.substring(0) + "_" + alphab.substring(holder); }
-    
-             
-            }
->>>>>>> afec8eb4278c3e209a86efd2771edd4cd3c38f72
 
                 
             }
         }
 
-<<<<<<< HEAD
     }
-=======
-    
->>>>>>> afec8eb4278c3e209a86efd2771edd4cd3c38f72
     String format = "";
     public boolean playGame(Wordle b, String e) {
         Wordle wordle = b;
