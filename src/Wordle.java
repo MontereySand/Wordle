@@ -11,6 +11,7 @@ import javax.swing.JTextField;
 import java.util.ArrayList;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.awt.Color;
 
 public class Wordle implements ActionListener {
     private final Timer timer;
@@ -29,7 +30,7 @@ public class Wordle implements ActionListener {
     public Wordle() {
         this.currentGuess = "";
         WORD_LENGTH = 5;
-        frame = new JFrame("Wordle");
+       frame = new JFrame("Wordle");
         frame.setLayout(new BorderLayout());
         grid = new JLabel[6][5];
         inputField = new JTextField();
@@ -38,7 +39,7 @@ public class Wordle implements ActionListener {
             for (int col = 0; col < grid[0].length; col++) {
                 grid[row][col] = new JLabel(); // creating the cells
             }
-        }
+        } 
         inputPanel = new JPanel();// uses FLowlayout by default
         inputPanel.add(inputField);
         inputPanel.add(button);
@@ -46,7 +47,7 @@ public class Wordle implements ActionListener {
         gridPanel = new JPanel();
         gridPanel.setLayout(new GridLayout(6,5));
         for(int row = 0; row < grid.length; row++){
-            for (int column = 0; column < grid.length; column++) {
+            for (int column = 0; column < grid[0].length; column++) {
                 gridPanel.add(grid[row][column]);
             }
         }
@@ -98,6 +99,21 @@ public class Wordle implements ActionListener {
         }
         return formatted;
     }
+    public Color[] resolve(String word){
+        Color[] colors = new Color[word.length()];
+        String answer = gameanswer.toLowerCase();
+        for (int i = 0; i < word.length(); i++) {
+            if (word.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
+                colors[i] = Color.GREEN;
+            } else if (answer.contains(word.substring(i, i + 1))) {
+                colors[i] = Color.YELLOW;
+            } else if (!answer.contains(word.substring(i, i + 1))) {
+                colors[i] = Color.BLACK;
+            }
+        }
+        return colors;
+    }
+
     public void play() {
         Wordle wordle = new Wordle();
         seconds = 0;

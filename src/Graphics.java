@@ -118,6 +118,7 @@ public class Graphics implements ActionListener {
         System.out.println(wordle.getAnswer());
         boolean badChar = false;
         String specialChars = "`1234567890-=~!@#$%^&*()_+[]}|;:',./<>?";
+
         for (int i = 0; i < e.length(); i++) {
             if (specialChars.contains(e.substring(i, i + 1))) {
                 System.out.println("bad char");
