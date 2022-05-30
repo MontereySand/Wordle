@@ -104,77 +104,77 @@ public class Wordle {
         return formatted;
     }
 
-    public Color[] resolve(String word) {
-        Color[] colors = new Color[word.length()];
-        String answer = gameanswer.toLowerCase();
-        for (int i = 0; i < word.length(); i++) {
-            if (word.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
-                colors[i] = Color.GREEN;
-            } else if (answer.contains(word.substring(i, i + 1))) {
-                colors[i] = Color.YELLOW;
-            } else if (!answer.contains(word.substring(i, i + 1))) {
-                colors[i] = Color.BLACK;
-            }
-        }
-        return colors;
-    }
+    // public Color[] resolve(String word) {
+    //     Color[] colors = new Color[word.length()];
+    //     String answer = gameanswer.toLowerCase();
+    //     for (int i = 0; i < word.length(); i++) {
+    //         if (word.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
+    //             colors[i] = Color.GREEN;
+    //         } else if (answer.contains(word.substring(i, i + 1))) {
+    //             colors[i] = Color.YELLOW;
+    //         } else if (!answer.contains(word.substring(i, i + 1))) {
+    //             colors[i] = Color.BLACK;
+    //         }
+    //     }
+    //     return colors;
+    // }
 
-    public void play() {
-        Wordle wordle = new Wordle();
-        seconds = 0;
-        String currentGuess;
-        System.out.println("Enter Guess #1:");
-        Scanner input = new Scanner(System.in);
-        currentGuess = this.currentGuess.toLowerCase();
-        while (currentGuess.length() > 5 || currentGuess.length() < 5) {
-            System.out.println("Enter A 5 Letter Word, Try again");
-            System.out.println("Enter Guess #1: ");
-            currentGuess = input.nextLine();
-        }
-        for (int i = 0; i < currentGuess.length(); i++) {
-            while (specialChars.contains(currentGuess.substring(i, i + 1))) {
-                System.out.println("Enter a valid word, try again");
-                System.out.println("Enter Guess #1: ");
-                currentGuess = input.nextLine();
-            }
-        }
-        if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
-            System.out.println("First try? Seems a little suspicious :)");
-            System.out.println("You won in " + seconds + " seconds");
-            return;
-        }
-        System.out.println(wordle.format(currentGuess));
-        int i = 1;
-        while (!currentGuess.equals(wordle.getAnswer())) {
-            System.out.println("Enter Guess #" + (i + 1) + ":");
-            currentGuess = input.nextLine();
-            if (currentGuess.length() != 5) {
-                System.out.println("Enter A 5 Letter Word, Try again");
-                continue;
-            }
-            for (int j = 0; j < currentGuess.length(); j++) {
-                if (specialChars.contains(currentGuess.substring(j, j + 1))) {
-                    System.out.println("Enter a valid word, try again");
-                    System.out.println("Enter Guess #" + (i + 1) + ";");
+    // public void play() {
+    //     Wordle wordle = new Wordle();
+    //     seconds = 0;
+    //     String currentGuess;
+    //     System.out.println("Enter Guess #1:");
+    //     Scanner input = new Scanner(System.in);
+    //     currentGuess = this.currentGuess.toLowerCase();
+    //     while (currentGuess.length() > 5 || currentGuess.length() < 5) {
+    //         System.out.println("Enter A 5 Letter Word, Try again");
+    //         System.out.println("Enter Guess #1: ");
+    //         currentGuess = input.nextLine();
+    //     }
+    //     for (int i = 0; i < currentGuess.length(); i++) {
+    //         while (specialChars.contains(currentGuess.substring(i, i + 1))) {
+    //             System.out.println("Enter a valid word, try again");
+    //             System.out.println("Enter Guess #1: ");
+    //             currentGuess = input.nextLine();
+    //         }
+    //     }
+    //     if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
+    //         System.out.println("First try? Seems a little suspicious :)");
+    //         System.out.println("You won in " + seconds + " seconds");
+    //         return;
+    //     }
+    //     System.out.println(wordle.format(currentGuess));
+    //     int i = 1;
+    //     while (!currentGuess.equals(wordle.getAnswer())) {
+    //         System.out.println("Enter Guess #" + (i + 1) + ":");
+    //         currentGuess = input.nextLine();
+    //         if (currentGuess.length() != 5) {
+    //             System.out.println("Enter A 5 Letter Word, Try again");
+    //             continue;
+    //         }
+    //         for (int j = 0; j < currentGuess.length(); j++) {
+    //             if (specialChars.contains(currentGuess.substring(j, j + 1))) {
+    //                 System.out.println("Enter a valid word, try again");
+    //                 System.out.println("Enter Guess #" + (i + 1) + ";");
 
-                    currentGuess = input.nextLine();
-                }
-            }
-            System.out.println(wordle.format(currentGuess));
-            if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
-                System.out.println("Good Job! You won the Wordle");
-                System.out.println("You won in " + seconds + " seconds");
-                break;
-            }
-            if (i > 4) {
-                System.out.println("Better luck next time, the answer was");
-                System.out.println(wordle.getAnswer());
-                System.out.println("You took " + seconds + " seconds");
-                return;
-            }
-            i++;
-        }
-    }
+    //                 currentGuess = input.nextLine();
+    //             }
+    //         }
+    //         System.out.println(wordle.format(currentGuess));
+    //         if (wordle.format(currentGuess).equals(wordle.getAnswer())) {
+    //             System.out.println("Good Job! You won the Wordle");
+    //             System.out.println("You won in " + seconds + " seconds");
+    //             break;
+    //         }
+    //         if (i > 4) {
+    //             System.out.println("Better luck next time, the answer was");
+    //             System.out.println(wordle.getAnswer());
+    //             System.out.println("You took " + seconds + " seconds");
+    //             return;
+    //         }
+    //         i++;
+    //     }
+    // }
 
     public String loop(String e) {
         String s = format(e);

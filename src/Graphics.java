@@ -13,6 +13,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 
 public class Graphics implements ActionListener {
     private JFrame frame;
@@ -103,6 +105,7 @@ public class Graphics implements ActionListener {
         frame.setVisible(true);
         frame.add(new JLabel());
         frame.setPreferredSize(new Dimension(900, 800));
+        frame.setBounds(500, 500, 900, 800);
         frame.setVisible(true);
         frame.setLocationRelativeTo(panel);
         teeth.setVisible(true);
@@ -154,28 +157,42 @@ public class Graphics implements ActionListener {
     // needs work
     String alphab = "qwertyuiopasdfghjklzxcvbnm";
 
-    public void alphaColor(String b, String format) {
-        int holder = 0;
-        for (int i = 0; i < format.length(); i++) {
-            if (format.substring(i, i + 1).equals("^")) {
-                holder = alphab.indexOf(b.substring(i, i + 1));
-                alpha.get(holder + 1).setBackground(Color.YELLOW);
-                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
+    // public void alphaColor(String b, String format) {
+    //     int holder = 0;
+    //     for (int i = 0; i < format.length(); i++) {
+    //         if (format.substring(i, i + 1).equals("^")) {
+    //             holder = alphab.indexOf(b.substring(i, i + 1));
+    //             alpha.get(holder + 1).setBackground(Color.YELLOW);
+    //             alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
 
-            } else if (format.substring(i, i + 1).equals("_")) {
-                holder = alphab.indexOf(b.substring(i, i + 1));
-                alpha.get(holder + 1).setBackground(Color.GRAY);
-                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
+    //         } else if (format.substring(i, i + 1).equals("_")) {
+    //             holder = alphab.indexOf(b.substring(i, i + 1));
+    //             alpha.get(holder + 1).setBackground(Color.GRAY);
+    //             alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
 
-            } else {
-                holder = alphab.indexOf(b.substring(i, i + 1));
-                alpha.get(holder + 1).setBackground(Color.GREEN);
-                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
+    //         } else {
+    //             holder = alphab.indexOf(b.substring(i, i + 1));
+    //             alpha.get(holder + 1).setBackground(Color.GREEN);
+    //             alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
 
-            }
+    //         }
+    //     }
+
+    // }
+
+    public void popOut(String s){
+       
+            final JFrame parent = new JFrame();
+            JLabel button = new JLabel(); 
+            parent.add(button); 
+            button.setText(s);
+            button.setHorizontalAlignment(SwingConstants.CENTER);
+            button.setVisible(true); 
+            parent.pack(); 
+            parent.setBounds(300, 200, 150, 150);
+            parent.setVisible(true);
         }
-
-    }
+    
 
     String format = "";
 
@@ -186,13 +203,15 @@ public class Graphics implements ActionListener {
 
         for (int i = 0; i < e.length(); i++) {
             if (specialChars.contains(e.substring(i, i + 1))) {
-                System.out.println("bad char");
+                //System.out.println("bad char");
                 badChar = true;
+                popOut("Bad character(s)");
             }
         }
         if (e.length() > 5 || e.length() < 5) {
-            System.out.println("BAD LENGTH");
+            //System.out.println("BAD LENGTH");
             badChar = true;
+            popOut("Bad length"); 
         } else if (!badChar) {
             wordle.loop(e);
             format = wordle.loop(e);
@@ -210,17 +229,19 @@ public class Graphics implements ActionListener {
         if (playGame(weed, b) == true) {
             buttonWord(x, b);
             buttonColor(format, x);
-            alphaColor(b, format);
+            //alphaColor(b, format);
             x++;
         }
         if (b.equals(weed.getAnswer())) {
-            System.out.println("WINNER WINNER");
-            System.out.println("You got it in " + (x - 1) + " guess(es)");
+            // System.out.println("WINNER WINNER");
+            // System.out.println("You got it in " + (x - 1) + " guess(es)");
+            popOut("WINNER WINNER. You got it in " + (x) + " guess(es)"); 
             return;
         }
         if (x == 6) {
-            System.out.println("You lost!");
-            System.out.println("The word was " + weed.getAnswer());
+            // System.out.println("You lost!");
+            // System.out.println("The word was " + weed.getAnswer());
+            popOut("You lost. The word was " + weed.getAnswer()); 
             return;
         }
         teeth.setText(null);
