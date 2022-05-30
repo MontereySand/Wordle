@@ -15,7 +15,7 @@ public class GridWithBorders extends JPanel {
     private static final int COLUMN = 5;
     private static final int SIDE_LENGTH = 60;
     private static final int GAP = 3;
-    private static final Color BG = Color.BLACK;
+    private static final Color BG = Color.WHITE;
     private static final Color CELL_COLOR = Color.WHITE;
     private JLabel[][] grid;
     private int currentPosition;
