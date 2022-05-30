@@ -12,7 +12,7 @@ import java.awt.BorderLayout;
 @SuppressWarnings("serial")
 public class GridWithBorders extends JPanel {
     private static final int ROW = 6;
-    private static final int COLUMN = 5;
+    private static final int COLUMN = 6;
     private static final int SIDE_LENGTH = 60;
     private static final int GAP = 3;
     private static final Color BG = Color.WHITE;
@@ -37,7 +37,7 @@ public class GridWithBorders extends JPanel {
         setLayout(new GridLayout(ROW, COLUMN, GAP, GAP));
         Dimension prefSize = new Dimension(SIDE_LENGTH, SIDE_LENGTH);
         setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
-        grid = new JLabel[6][5];
+        grid = new JLabel[6][6];
         for (int row = 0; row < grid.length; row++) {
             for (int col = 0; col < grid[0].length; col++) {
                 grid[row][col] = new JLabel(); // creating the cells
@@ -108,9 +108,9 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
     public void actionPerformed(ActionEvent e) {
         String word = input.getText();
         input.setText("");
-        if (word.length() != 5) {
+        if (word.length() != 6) {
             JOptionPane.showMessageDialog(null,
-                    "Word length should be 5");
+                    "Word length should be 6");
             return;
         }
 
@@ -121,12 +121,12 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
             return;
         }
 
-        boolean validGuess = validateWord(word);
+       /* boolean validGuess = validateWord(word);
         if (!validGuess) {
             JOptionPane.showMessageDialog(null,
                     "Only valid English words allowed");
             return;
-        }
+        } */ // move logic to Giulia's GUI
 
         Color[] colors = resolve(word);
         // get the current Row to be filled from mainPanel
@@ -169,14 +169,14 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         }
     }
 
-    private boolean validateWord(String word) {
+   /* private boolean validateWord(String word) {
         for (int i = 0; i < possibleGuesses.size(); i++) {
             if (word.equals(possibleGuesses.get(i))) {
                 return true;
             }
         }
         return false;
-    }
+    } */
 
     private boolean validateInput(String word) {
         char[] letters = word.toCharArray();
@@ -216,7 +216,7 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null;
         try {
-            sc = new Scanner(new FileReader("lib/dict.txt"));
+            sc = new Scanner(new FileReader("lib/dict2.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -229,7 +229,7 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         return word;
     }
 
-    public ArrayList<String> guesses() {
+    /*public ArrayList<String> guesses() {
         ArrayList<String> guess = new ArrayList<String>();
         Scanner sc = null;
         try {
@@ -243,6 +243,6 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
             guess.add(str);
         }
         return guess;
-    }
+    } */ // move code to Giulia's GUI
 }
 // tasks: have input fill the grid and check
