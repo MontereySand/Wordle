@@ -1,4 +1,4 @@
-## Description
+## Description/To-Be
 Project editors: Aditya M, Guilia T, Krrish G
 
 Wordle written in Java with a GUI made using Java Swing.
