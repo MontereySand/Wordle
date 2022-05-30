@@ -1,36 +1,16 @@
-import javax.management.Query;
-import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Color;
-import java.awt.GridLayout;
-import java.awt.Window;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Random;
 
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
-import java.awt.event.*;
+
 public class Graphics implements ActionListener {
     private JFrame frame;
     private JPanel panel;
@@ -38,7 +18,7 @@ public class Graphics implements ActionListener {
     JTextField teeth = new JTextField(5);
     JButton killMe = new JButton("");
     List<JButton> alpha = new ArrayList();
-   
+
     public Graphics() {
         frame = new JFrame();
         frame.getContentPane().setBackground(new Color(70, 70, 70));
@@ -64,59 +44,57 @@ public class Graphics implements ActionListener {
             frame.add(killMe);
             killMe.setVisible(true);
         }
-        //alphabet button creator 
-        String alphab = "qwertyuiopasdfghjklzxcvbnm"; 
-        int l = 700; 
-        int d = 100; 
-        for (int i = 0; i < 10; i++){
-            JButton gj = new JButton(alphab.substring(i, i+1)); 
-                gj.setBounds(l, d, 30, 30);
-                frame.add(gj);
-                alpha.add(gj); 
-                gj.setVisible(true);
-                gj.setOpaque(true);
-                d+=50; 
+        // alphabet button creator
+        String alphab = "qwertyuiopasdfghjklzxcvbnm";
+        int l = 700;
+        int d = 100;
+        for (int i = 0; i < 10; i++) {
+            JButton gj = new JButton(alphab.substring(i, i + 1));
+            gj.setBounds(l, d, 30, 30);
+            frame.add(gj);
+            alpha.add(gj);
+            gj.setVisible(true);
+            gj.setOpaque(true);
+            d += 50;
         }
-        d=134; 
-        l = 750; 
-        for(int i = 10; i < 19; i++){
-            
-           
-            JButton gj = new JButton(alphab.substring(i, i+1)); 
-                gj.setBounds(l, d, 30, 30);
-                frame.add(gj);
-                alpha.add(gj); 
-                gj.setVisible(true);
-                gj.setOpaque(true);
-                d+=50; 
-                System.out.println(gj);
+        d = 134;
+        l = 750;
+        for (int i = 10; i < 19; i++) {
+
+            JButton gj = new JButton(alphab.substring(i, i + 1));
+            gj.setBounds(l, d, 30, 30);
+            frame.add(gj);
+            alpha.add(gj);
+            gj.setVisible(true);
+            gj.setOpaque(true);
+            d += 50;
+            System.out.println(gj);
         }
-        d=180; 
+        d = 180;
         System.out.println(alphab.length());
-        //for(int i = alphab.length()-1; i>=19; i--){
-        for(int i = 19; i < alphab.length(); i++){
-            l=800; 
-            
-            JButton gj = new JButton(alphab.substring(i, i+1)); 
-                gj.setBounds(l, d, 30, 30);
-                frame.add(gj);
-                alpha.add(gj); 
-                gj.setVisible(true);
-                gj.setOpaque(true);
-                d+=50; 
-                System.out.println(gj);
+        // for(int i = alphab.length()-1; i>=19; i--){
+        for (int i = 19; i < alphab.length(); i++) {
+            l = 800;
+
+            JButton gj = new JButton(alphab.substring(i, i + 1));
+            gj.setBounds(l, d, 30, 30);
+            frame.add(gj);
+            alpha.add(gj);
+            gj.setVisible(true);
+            gj.setOpaque(true);
+            d += 50;
+            System.out.println(gj);
 
         }
         frame.add(new JButton());
-        JButton neww = new JButton(); 
-        alpha.add(0, neww); 
-       
+        JButton neww = new JButton();
+        alpha.add(0, neww);
 
         frame.setVisible(true);
         JButton b = new JButton("submit");
         b.setBounds(5, 30, 100, 40);
         b.addActionListener(this);
-        b.setBackground(Color.DARK_GRAY); 
+        b.setBackground(Color.DARK_GRAY);
         frame.add(b);
         frame.add(teeth);
         frame.setVisible(true);
@@ -130,13 +108,16 @@ public class Graphics implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
     }
+
     public void set_visible(JFrame c) {
         c.setVisible(true);
     }
+
     public static void main(String[] args) {
         new Graphics();
 
     }
+
     // methods needed:
     // a method that grabs a correct input and puts it on the buttons
     // a method that changes the colors
@@ -149,6 +130,7 @@ public class Graphics implements ActionListener {
             finalAr[i][y].setText(b.substring(y, y + 1).toUpperCase());
         }
     }
+
     public void buttonColor(String b, int x) {
         for (int i = 0; i < b.length(); i++) {
             if (b.substring(i, i + 1).equals("^")) {
@@ -161,34 +143,34 @@ public class Graphics implements ActionListener {
         }
     }
 
-    //needs work 
-    String alphab = "qwertyuiopasdfghjklzxcvbnm"; 
-    public void alphaColor(String b, String format){
+    // needs work
+    String alphab = "qwertyuiopasdfghjklzxcvbnm";
+
+    public void alphaColor(String b, String format) {
         int holder = 0;
         for (int i = 0; i < format.length(); i++) {
             if (format.substring(i, i + 1).equals("^")) {
-                holder = alphab.indexOf(b.substring(i, i+1)); 
-                alpha.get(holder + 1).setBackground(Color.YELLOW); 
-                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length()); 
+                holder = alphab.indexOf(b.substring(i, i + 1));
+                alpha.get(holder + 1).setBackground(Color.YELLOW);
+                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
 
             } else if (format.substring(i, i + 1).equals("_")) {
-                holder = alphab.indexOf(b.substring(i, i+1)); 
-                alpha.get(holder +1).setBackground(Color.GRAY); 
-               alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length()); 
+                holder = alphab.indexOf(b.substring(i, i + 1));
+                alpha.get(holder + 1).setBackground(Color.GRAY);
+                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
 
-             
             } else {
-                holder = alphab.indexOf(b.substring(i, i+1)); 
-                alpha.get(holder +1).setBackground(Color.GREEN); 
-                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length()); 
+                holder = alphab.indexOf(b.substring(i, i + 1));
+                alpha.get(holder + 1).setBackground(Color.GREEN);
+                alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
 
-
-                
             }
         }
 
     }
+
     String format = "";
+
     public boolean playGame(Wordle b, String e) {
         Wordle wordle = b;
         boolean badChar = false;
@@ -203,18 +185,19 @@ public class Graphics implements ActionListener {
         if (e.length() > 5 || e.length() < 5) {
             System.out.println("BAD LENGTH");
             badChar = true;
-        } 
-        else if (!badChar) {
+        } else if (!badChar) {
             wordle.loop(e);
             format = wordle.loop(e);
             return true;
         }
         return false;
     }
+
     int x = 0;
     Wordle weed = new Wordle();
+
     public void actionPerformed(ActionEvent e) {
-        System.out.println(weed.getAnswer()); 
+        System.out.println(weed.getAnswer());
         String b = teeth.getText();
         if (playGame(weed, b) == true) {
             buttonWord(x, b);
@@ -229,7 +212,7 @@ public class Graphics implements ActionListener {
         }
         if (x == 6) {
             System.out.println("You lost!");
-            System.out.println("The word was " + weed.getAnswer()); 
+            System.out.println("The word was " + weed.getAnswer());
             return;
         }
         teeth.setText(null);
