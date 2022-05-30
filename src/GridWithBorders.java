@@ -99,7 +99,7 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         submit = new JButton("Submit");
         submit.addActionListener(this);
         gameanswer = wordExtractor();
-        possibleGuesses = guesses();
+       // possibleGuesses = guesses(); 
         add(input);
         add(submit);
     }
