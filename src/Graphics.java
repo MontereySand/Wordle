@@ -2,7 +2,10 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -115,7 +118,12 @@ public class Graphics implements ActionListener {
 
     public static void main(String[] args) {
         new Graphics();
-
+        try {
+            HashMap<String, BufferedImage> GreenLetters = ImageLoader.LoadImage("Letters Green.png");
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     // methods needed:

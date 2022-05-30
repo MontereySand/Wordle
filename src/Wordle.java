@@ -13,7 +13,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Color;
 
-public class Wordle implements ActionListener {
+public class Wordle {
     private final Timer timer;
     private final String gameanswer;
     private final String specialChars;
