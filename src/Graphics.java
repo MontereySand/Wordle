@@ -3,10 +3,13 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -121,12 +124,6 @@ public class Graphics implements ActionListener {
 
     public static void main(String[] args) {
         new Graphics();
-        try {
-            HashMap<String, BufferedImage> GreenLetters = ImageLoader.LoadImage("Letters Green.png");
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 
     // methods needed:
@@ -195,6 +192,32 @@ public class Graphics implements ActionListener {
     
 
     String format = "";
+    private ArrayList<String> guess = new ArrayList<>(); 
+    public void guesses() {
+        Scanner sc = null;
+        try {
+            sc = new Scanner(new FileReader("lib/possibleguesses.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        String str;
+        while (sc.hasNext()) {
+            str = sc.next();
+            guess.add(str);
+        }
+    }
+
+ 
+
+    private boolean validateWord(String word) {
+        guesses(); 
+        for (int i = 0; i < guess.size(); i++) {
+            if (word.equals(guess.get(i))) {
+                return true;
+            }
+        }
+        return false;
+    } 
 
     public boolean playGame(Wordle b, String e) {
         Wordle wordle = b;
@@ -207,6 +230,10 @@ public class Graphics implements ActionListener {
                 badChar = true;
                 popOut("Bad character(s)");
             }
+        }
+        if(validateWord(e)){
+            badChar = true; 
+            popOut("Not an english word"); 
         }
         if (e.length() > 5 || e.length() < 5) {
             //System.out.println("BAD LENGTH");

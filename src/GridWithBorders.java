@@ -169,14 +169,14 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         }
     }
 
-   /* private boolean validateWord(String word) {
-        for (int i = 0; i < possibleGuesses.size(); i++) {
-            if (word.equals(possibleGuesses.get(i))) {
-                return true;
-            }
-        }
-        return false;
-    } */
+//    private boolean validateWord(String word) {
+//         for (int i = 0; i < possibleGuesses.size(); i++) {
+//             if (word.equals(possibleGuesses.get(i))) {
+//                 return true;
+//             }
+//         }
+//         return false;
+//     } 
 
     private boolean validateInput(String word) {
         char[] letters = word.toCharArray();
