@@ -27,10 +27,11 @@ public class Wordle {
     private JPanel inputPanel;
     private String currentGuess;
     public final int WORD_LENGTH;
+
     public Wordle() {
         this.currentGuess = "";
         WORD_LENGTH = 5;
-       frame = new JFrame("Wordle");
+        frame = new JFrame("Wordle");
         frame.setLayout(new BorderLayout());
         grid = new JLabel[6][5];
         inputField = new JTextField();
@@ -39,20 +40,20 @@ public class Wordle {
             for (int col = 0; col < grid[0].length; col++) {
                 grid[row][col] = new JLabel(); // creating the cells
             }
-        } 
+        }
         inputPanel = new JPanel();// uses FLowlayout by default
         inputPanel.add(inputField);
         inputPanel.add(button);
         frame.add(inputPanel, BorderLayout.NORTH);
         gridPanel = new JPanel();
-        gridPanel.setLayout(new GridLayout(6,5));
-        for(int row = 0; row < grid.length; row++){
+        gridPanel.setLayout(new GridLayout(6, 5));
+        for (int row = 0; row < grid.length; row++) {
             for (int column = 0; column < grid[0].length; column++) {
                 gridPanel.add(grid[row][column]);
             }
         }
-        
-        //frame.add(inputField, BorderLayout.NORTH);
+
+        // frame.add(inputField, BorderLayout.NORTH);
 
         gameanswer = wordExtractor();
         specialChars = "`1234567890-=~!@#$%^&*()_+[]}|;:',./<>?";
@@ -65,10 +66,12 @@ public class Wordle {
             }
         };
     }
+
     public String getAnswer() {
 
         return gameanswer;
     }
+
     public String wordExtractor() {
         ArrayList<String> words = new ArrayList<String>();
         Scanner sc = null;
@@ -85,6 +88,7 @@ public class Wordle {
         String word = words.get((int) (Math.random() * words.size()));
         return word;
     }
+
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer.toLowerCase();
@@ -99,7 +103,8 @@ public class Wordle {
         }
         return formatted;
     }
-    public Color[] resolve(String word){
+
+    public Color[] resolve(String word) {
         Color[] colors = new Color[word.length()];
         String answer = gameanswer.toLowerCase();
         for (int i = 0; i < word.length(); i++) {
@@ -170,15 +175,18 @@ public class Wordle {
             i++;
         }
     }
+
     public String loop(String e) {
         String s = format(e);
         System.out.println(s);
         return s;
     }
+
     public void timerStart() {
         timer.scheduleAtFixedRate(task, 1000, 1000);
 
     }
+
     public static void main(String[] args) {
         Wordle wordle = new Wordle();
         wordle.loop("e");

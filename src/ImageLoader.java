@@ -6,7 +6,8 @@ import java.util.HashMap;
 
 public class ImageLoader {
 
-    public static String[] letters = {"a", "b", "c", "d", "e", "f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","w","x","y","z"};
+    public static String[] letters = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+            "q", "r", "s", "t", "w", "x", "y", "z" };
     public static String[][] lettersMatrix = new String[5][6];
 
     public static HashMap<String, BufferedImage> LoadImage(String path) throws IOException {
@@ -20,7 +21,7 @@ public class ImageLoader {
         int currentRow = 0;
         int currentCol = 0;
 
-        for ( int i = 0; i < letters.length; i++) {
+        for (int i = 0; i < letters.length; i++) {
             lettersMatrix[currentRow][currentCol] = letters[i];
             currentCol++;
             if (currentCol >= cols) {
@@ -36,14 +37,14 @@ public class ImageLoader {
 
         int chunkWidth = image.getWidth() / cols; // determines the chunk width and height
         int chunkHeight = image.getHeight() / rows;
-       
-        BufferedImage subs[][] = new BufferedImage [rows][cols]; // Image array to hold image chunks
-    
+
+        BufferedImage subs[][] = new BufferedImage[rows][cols]; // Image array to hold image chunks
+
         for (int r = 0; r < rows; r++) {
             for (int c = 0; c < cols; c++) {
                 subs[r][c] = new BufferedImage(chunkWidth, chunkHeight, image.getType());
-                
-                // draws the image chunk            
+
+                // draws the image chunk
                 Graphics2D gr = subs[r][c].createGraphics();
                 gr.drawImage(image, 0, 0, chunkWidth, chunkHeight, chunkWidth * c, chunkHeight * r,
                         chunkWidth * c + chunkWidth, chunkHeight * r + chunkHeight, null);
