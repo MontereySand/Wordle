@@ -126,9 +126,7 @@ public class Graphics implements ActionListener {
         new Graphics();
     }
 
-    // methods needed:
-    // a method that grabs a correct input and puts it on the buttons
-    // a method that changes the colors
+  
     public void buttonWord(int i, String b) {
         for (int y = 0; y < finalAr[0].length; y++) {
             if (y == 4 && i == 5) {
@@ -154,28 +152,17 @@ public class Graphics implements ActionListener {
     // needs work
     String alphab = "qwertyuiopasdfghjklzxcvbnm";
 
-    // public void alphaColor(String b, String format) {
-    //     int holder = 0;
-    //     for (int i = 0; i < format.length(); i++) {
-    //         if (format.substring(i, i + 1).equals("^")) {
-    //             holder = alphab.indexOf(b.substring(i, i + 1));
-    //             alpha.get(holder + 1).setBackground(Color.YELLOW);
-    //             alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
+    public void alphaColor(String b, String format) {
+        int holder = 0;
+        for (int i = 0; i < format.length(); i++) {
+            if (format.substring(i, i + 1).equals("_")) {
+                holder = alphab.indexOf(b.substring(i, i + 1));
+                alpha.get(holder + 1).setBackground(Color.GRAY);
 
-    //         } else if (format.substring(i, i + 1).equals("_")) {
-    //             holder = alphab.indexOf(b.substring(i, i + 1));
-    //             alpha.get(holder + 1).setBackground(Color.GRAY);
-    //             alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
+            }
 
-    //         } else {
-    //             holder = alphab.indexOf(b.substring(i, i + 1));
-    //             alpha.get(holder + 1).setBackground(Color.GREEN);
-    //             alphab = alphab.substring(0) + "_" + alphab.substring(holder, alphab.length());
-
-    //         }
-    //     }
-
-    // }
+    }
+}
 
     public void popOut(String s){
        
@@ -222,15 +209,7 @@ public class Graphics implements ActionListener {
     public boolean playGame(Wordle b, String e) {
         Wordle wordle = b;
         boolean badChar = false;
-        String specialChars = "`1234567890-=~!@#$%^&*()_+[]}|;:',./<>?";
-
-        for (int i = 0; i < e.length(); i++) {
-            if (specialChars.contains(e.substring(i, i + 1))) {
-                //System.out.println("bad char");
-                badChar = true;
-                popOut("Bad character(s)");
-            }
-        }
+        
         if(!validateWord(e)){
             badChar = true; 
             popOut("Not an english word"); 
@@ -256,7 +235,7 @@ public class Graphics implements ActionListener {
         if (playGame(weed, b) == true) {
             buttonWord(x, b);
             buttonColor(format, x);
-            //alphaColor(b, format);
+            alphaColor(b, format);
             x++;
         }
         if (b.equals(weed.getAnswer())) {
