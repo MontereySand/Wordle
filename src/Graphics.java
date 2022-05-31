@@ -210,15 +210,16 @@ public class Graphics implements ActionListener {
         Wordle wordle = b;
         boolean badChar = false;
         
-        if(!validateWord(e)){
-            badChar = true; 
-            popOut("Not an english word"); 
-        }
         if (e.length() > 5 || e.length() < 5) {
             //System.out.println("BAD LENGTH");
             badChar = true;
-            popOut("Bad length"); 
-        } else if (!badChar) {
+            popOut("Bad length"); }
+        else if(!validateWord(e)){
+            badChar = true; 
+            popOut("Not an english word"); 
+        }
+       
+         else if (!badChar) {
             wordle.loop(e);
             format = wordle.loop(e);
             return true;

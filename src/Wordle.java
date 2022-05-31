@@ -48,20 +48,6 @@ public class Wordle {
         return word;
     }
 
-    // public String format(String s) {
-    //     String formatted = "";
-    //     String answer = gameanswer.toLowerCase();
-    //     for (int i = 0; i < 5; i++) {
-    //         if (s.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
-    //             formatted += answer.substring(i, i + 1);
-    //         } else if (answer.contains(s.substring(i, i + 1))) {
-    //             formatted += "^";
-    //         } else if (!answer.contains(s.substring(i, i + 1))) {
-    //             formatted += "_";
-    //         }
-    //     }
-    //     return formatted;
-    // }
     public String format(String s) {
         String formatted = "";
         String answer = gameanswer.toLowerCase();
