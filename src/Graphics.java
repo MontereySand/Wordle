@@ -231,7 +231,7 @@ public class Graphics implements ActionListener {
                 popOut("Bad character(s)");
             }
         }
-        if(validateWord(e)){
+        if(!validateWord(e)){
             badChar = true; 
             popOut("Not an english word"); 
         }
