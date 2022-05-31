@@ -7,7 +7,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.awt.BorderLayout;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 
 @SuppressWarnings("serial")
 public class GridWithBorders extends JPanel {
@@ -46,8 +51,9 @@ public class GridWithBorders extends JPanel {
         for (int row = 0; row < ROW; row++) {
             for (int col = 0; col < COLUMN; col++) {
                 JLabel cell = grid[row][col];
-                cell.setBackground(CELL_COLOR);
+                //cell.setBackground(CELL_COLOR);
                 cell.setPreferredSize(prefSize);
+                cell.setOpaque(true);
                 cell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 add(cell);
             }
@@ -69,11 +75,16 @@ public class GridWithBorders extends JPanel {
 
     private static void createAndShowGui() {
         GridWithBorders mainPanel = new GridWithBorders();
-        InputPanel inputPanel = new InputPanel(mainPanel);
-        JFrame frame = new JFrame("GridWithBorders");
+        HeaderPanel headerPanel = new HeaderPanel();
+        InputPanel inputPanel = new InputPanel(mainPanel, headerPanel);
+        JPanel top = new JPanel();
+        top.setLayout(new GridLayout(2, 1));
+        top.add(headerPanel);
+        top.add(inputPanel);
+        JFrame frame = new JFrame("Wordle");
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(inputPanel, BorderLayout.NORTH);
+        frame.getContentPane().add(top, BorderLayout.NORTH);
         frame.getContentPane().add(mainPanel, BorderLayout.CENTER);
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -83,6 +94,7 @@ public class GridWithBorders extends JPanel {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> createAndShowGui());
     }
+
 }
 
 class InputPanel extends JPanel implements java.awt.event.ActionListener {
@@ -92,14 +104,17 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
     private GridWithBorders mainPanel;
     private String gameanswer;
     private ArrayList<String> possibleGuesses;
+    private HeaderPanel headerPanel;
 
-    public InputPanel(GridWithBorders mainPanel) {
+    public InputPanel(GridWithBorders mainPanel, HeaderPanel header) {
         this.mainPanel = mainPanel;
+        this.headerPanel = header;
         input = new JTextField(20);
         submit = new JButton("Submit");
         submit.addActionListener(this);
         gameanswer = wordExtractor();
-       // possibleGuesses = guesses(); 
+        System.out.println("Word is " + gameanswer);
+        possibleGuesses = guesses(); 
         add(input);
         add(submit);
     }
@@ -121,21 +136,33 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
             return;
         }
 
-       /* boolean validGuess = validateWord(word);
+       boolean validGuess = validateWord(word);
         if (!validGuess) {
             JOptionPane.showMessageDialog(null,
                     "Only valid English words allowed");
             return;
-        } */ // move logic to Giulia's GUI
+        }  
 
         Color[] colors = resolve(word);
         // get the current Row to be filled from mainPanel
         int currentRow = mainPanel.getCurrentPosition();
         // check if currentRow is out of bounds
-        if (currentRow >= 6) {
+        if (currentRow >= 5) {
             JOptionPane.showMessageDialog(null,
-                    "No more words allowed");
-            return;
+                    "No more words allowed. The correct answer was" + gameanswer + " You took " + headerPanel.getTimeTaken() + " secs");
+             // reset the game answer
+            gameanswer = wordExtractor();
+            // reset the labels
+            JLabel[][] grid = mainPanel.getGrid();
+            for (int row = 0; row < grid.length; row++) {
+                for (int col = 0; col < grid[row].length; col++) {
+                    grid[row][col].setText("");
+                    grid[row][col].setBackground(Color.WHITE);
+                }
+            }
+            mainPanel.setCurrentPosition(0);
+            headerPanel.resetTimer();
+            mainPanel.repaint();
         }
         // get the Jlabel array for that row
         JLabel[] labelRow = mainPanel.getGrid()[currentRow];
@@ -144,17 +171,20 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
             String letter = "" + word.charAt(i);
             letter = letter.toUpperCase();
             labelRow[i].setText(letter);
-            labelRow[i].setForeground(colors[i]);
+            labelRow[i].setBackground(colors[i]);
+            //System.out.println(colors[i]);
+            labelRow[i].setForeground(Color.WHITE);
+            //labelRow[i].setForeground(colors[i]);
             labelRow[i].setHorizontalAlignment(JLabel.CENTER);
             labelRow[i].setVerticalAlignment(JLabel.CENTER);
-
+            labelRow[i].repaint();
         }
         // tell mainPanel to repaint itself
         mainPanel.setCurrentPosition(currentRow + 1);
-        mainPanel.repaint();
+        //mainPanel.repaint();
         if (word.equalsIgnoreCase(gameanswer)) {
             JOptionPane.showMessageDialog(null,
-                    "Hurray, you got the correct word!!");
+                    "Hurray, you got the correct word!! You took " + headerPanel.getTimeTaken() + " secs");
             // reset the game answer
             gameanswer = wordExtractor();
             // reset the labels
@@ -162,21 +192,23 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
             for (int row = 0; row < grid.length; row++) {
                 for (int col = 0; col < grid[row].length; col++) {
                     grid[row][col].setText("");
+                    grid[row][col].setBackground(Color.WHITE);
                 }
             }
             mainPanel.setCurrentPosition(0);
+            headerPanel.resetTimer();
             mainPanel.repaint();
         }
     }
 
-//    private boolean validateWord(String word) {
-//         for (int i = 0; i < possibleGuesses.size(); i++) {
-//             if (word.equals(possibleGuesses.get(i))) {
-//                 return true;
-//             }
-//         }
-//         return false;
-//     } 
+    private boolean validateWord(String word) {
+         for (int i = 0; i < possibleGuesses.size(); i++) {
+            if (word.equals(possibleGuesses.get(i))) {
+                 return true;
+             }
+         }
+       return false;
+     } 
 
     private boolean validateInput(String word) {
         char[] letters = word.toCharArray();
@@ -202,11 +234,11 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         String answer = gameanswer.toLowerCase();
         for (int i = 0; i < word.length(); i++) {
             if (word.substring(i, i + 1).equals(answer.substring(i, i + 1))) {
-                colors[i] = Color.GREEN;
+                colors[i] = new Color(0, 153, 0); // dark green
             } else if (answer.contains(word.substring(i, i + 1))) {
-                colors[i] = Color.YELLOW;
+                colors[i] = new Color(255, 204, 0); // dark yellow
             } else if (!answer.contains(word.substring(i, i + 1))) {
-                colors[i] = Color.BLACK;
+                colors[i] = Color.darkGray;
             }
         }
         return colors;
@@ -229,11 +261,11 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         return word;
     }
 
-    /*public ArrayList<String> guesses() {
+    public ArrayList<String> guesses() {
         ArrayList<String> guess = new ArrayList<String>();
         Scanner sc = null;
         try {
-            sc = new Scanner(new FileReader("lib/possibleguesses.txt"));
+            sc = new Scanner(new FileReader("lib/possibleguesses2.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -243,6 +275,62 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
             guess.add(str);
         }
         return guess;
-    } */ // move code to Giulia's GUI
+    } 
+
+ }
+
+class HeaderPanel extends JPanel{
+    JLabel logo;
+    JLabel timerLabel;
+    private final Timer timer;
+    private final TimerTask task;
+    private int minute;
+    private int seconds;
+
+    public HeaderPanel() {
+        timerLabel = new JLabel(minute + " : " + seconds);
+        logo = new JLabel();
+        ImageIcon icon = new ImageIcon("lib/Letters/WordleLogo.png");
+        icon = resize(icon, 150, 50);
+        logo.setIcon(icon);
+        // scale image, change background color of wordle grid, print timer and reset
+        timer = new Timer();
+        task = new TimerTask() {
+            @Override
+            public void run() {
+                seconds++;
+                if(seconds == 60){
+                    minute++;
+                    seconds = 0;
+                }
+                if (seconds < 10)
+                timerLabel.setText("0" + minute + " : " + "0" + seconds);
+                if (seconds >= 10) {
+                timerLabel.setText("0" + minute + " : " + seconds);
+                }
+            }
+        };
+        timer.scheduleAtFixedRate(task, 1000, 1000);
+        add(logo);
+        add(timerLabel);
+    }
+
+    public String getTimeTaken() {
+        return minute + " : " + seconds;
+    }
+
+    public void resetTimer(){
+        minute = 0;
+        seconds = 0;
+    } 
+
+    public static ImageIcon resize(ImageIcon image, int width, int height) {
+        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TRANSLUCENT);
+        Graphics2D g2d = (Graphics2D) bi.createGraphics();
+        g2d.addRenderingHints(new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY));
+        g2d.drawImage(image.getImage(), 0, 0, width, height, null);
+        g2d.dispose();
+        return new ImageIcon(bi);
+    }
 }
-// tasks: have input fill the grid and check
+
