@@ -53,7 +53,7 @@ public class GridWithBorders extends JPanel {
                 JLabel cell = grid[row][col];
                 //cell.setBackground(CELL_COLOR);
                 cell.setPreferredSize(prefSize);
-                cell.setOpaque(true);
+                cell.setOpaque(true); // need for background color to show
                 cell.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 add(cell);
             }
@@ -81,7 +81,7 @@ public class GridWithBorders extends JPanel {
         top.setLayout(new GridLayout(2, 1));
         top.add(headerPanel);
         top.add(inputPanel);
-        JFrame frame = new JFrame("Wordle");
+        JFrame frame = new JFrame("Wordle- Hard Mode");
         frame.setLayout(new BorderLayout());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(top, BorderLayout.NORTH);
@@ -105,6 +105,7 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
     private String gameanswer;
     private ArrayList<String> possibleGuesses;
     private HeaderPanel headerPanel;
+   
 
     public InputPanel(GridWithBorders mainPanel, HeaderPanel header) {
         this.mainPanel = mainPanel;
@@ -123,6 +124,7 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
     public void actionPerformed(ActionEvent e) {
         String word = input.getText();
         input.setText("");
+        
         if (word.length() != 6) {
             JOptionPane.showMessageDialog(null,
                     "Word length should be 6");
@@ -142,17 +144,38 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
                     "Only valid English words allowed");
             return;
         }  
+    
 
         Color[] colors = resolve(word);
+
         // get the current Row to be filled from mainPanel
-        int currentRow = mainPanel.getCurrentPosition();
+       int currentRow = mainPanel.getCurrentPosition();
+       mainPanel.setCurrentPosition(currentRow + 1);
+       // System.out.println(currentRow);
+        
         // check if currentRow is out of bounds
-        if (currentRow >= 5) {
-            JOptionPane.showMessageDialog(null,
-                    "No more words allowed. The correct answer was" + gameanswer + " You took " + headerPanel.getTimeTaken() + " secs");
+        if (currentRow == 5) {
+            if (word.equalsIgnoreCase(gameanswer)) {
+                JOptionPane.showMessageDialog(null,
+                        "Hurray, you got the correct word!! You took " + headerPanel.getTimeTaken() + " secs");
+            }
+            JLabel[] labelRow = mainPanel.getGrid()[currentRow];
+            for (int i = 0; i < labelRow.length; i++) {
+                String letter = "" + word.charAt(i);
+                letter = letter.toUpperCase();
+                labelRow[i].setText(letter);
+                labelRow[i].setBackground(colors[i]);
+                //System.out.println(colors[i]);
+                labelRow[i].setForeground(Color.WHITE);
+                //labelRow[i].setForeground(colors[i]);
+                labelRow[i].setHorizontalAlignment(JLabel.CENTER);
+                labelRow[i].setVerticalAlignment(JLabel.CENTER);
+                labelRow[i].repaint();
+              }
+            JOptionPane.showMessageDialog(null, 
+            "No more words allowed. The correct answer was " + gameanswer + ". You took " + headerPanel.getTimeTaken() + " secs");
              // reset the game answer
             gameanswer = wordExtractor();
-            // reset the labels
             JLabel[][] grid = mainPanel.getGrid();
             for (int row = 0; row < grid.length; row++) {
                 for (int col = 0; col < grid[row].length; col++) {
@@ -167,6 +190,8 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         // get the Jlabel array for that row
         JLabel[] labelRow = mainPanel.getGrid()[currentRow];
         // manipulate the color and font for each JLabel
+
+        if (currentRow != 5) {
         for (int i = 0; i < labelRow.length; i++) {
             String letter = "" + word.charAt(i);
             letter = letter.toUpperCase();
@@ -179,9 +204,11 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
             labelRow[i].setVerticalAlignment(JLabel.CENTER);
             labelRow[i].repaint();
         }
-        // tell mainPanel to repaint itself
-        mainPanel.setCurrentPosition(currentRow + 1);
-        //mainPanel.repaint();
+    }
+        
+
+          
+        // mainPanel.repaint();
         if (word.equalsIgnoreCase(gameanswer)) {
             JOptionPane.showMessageDialog(null,
                     "Hurray, you got the correct word!! You took " + headerPanel.getTimeTaken() + " secs");
@@ -201,9 +228,11 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         }
     }
 
+    
+
     private boolean validateWord(String word) {
          for (int i = 0; i < possibleGuesses.size(); i++) {
-            if (word.equals(possibleGuesses.get(i))) {
+            if (word.equalsIgnoreCase(possibleGuesses.get(i))) {
                  return true;
              }
          }
@@ -265,19 +294,20 @@ class InputPanel extends JPanel implements java.awt.event.ActionListener {
         ArrayList<String> guess = new ArrayList<String>();
         Scanner sc = null;
         try {
-            sc = new Scanner(new FileReader("lib/possibleguesses2.txt"));
+            sc = new Scanner(new FileReader("lib/possibleguesses3.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
         String str;
         while (sc.hasNext()) {
             str = sc.next();
+            if(str.length() == 6) {
             guess.add(str);
         }
-        return guess;
     } 
-
+    return guess;
  }
+}
 
 class HeaderPanel extends JPanel{
     JLabel logo;
@@ -332,5 +362,6 @@ class HeaderPanel extends JPanel{
         g2d.dispose();
         return new ImageIcon(bi);
     }
-}
+  }
+
 
